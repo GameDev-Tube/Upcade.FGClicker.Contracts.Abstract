@@ -89,6 +89,12 @@ contract HighScore is
         return _verifyMessage(message, encodedMessage);
     }
 
+    /// @notice Sets the backend wallet address. Can only be called by the owner
+    /// @param _backendSigner The address of the backend wallet
+    function setBackendSigner(address _backendSigner) external onlyOwner {
+        backendSigner = _backendSigner;
+    }
+
     /// @notice Debug function to get the signer of a message
     /// @param message The message containing the player address, score and nonce
     /// @param signature The signature of the message
