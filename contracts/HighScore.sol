@@ -36,7 +36,7 @@ contract HighScore is
 
     /// @dev Custom errors
     error NonceAlreadyUsed(string nonce);
-    error InvalidSignature();
+    error InvalidSigner();
     error ScoreNotHigher(uint previousScore, uint currentScore);
 
     /// @notice Mapping of player address to their high score
@@ -65,7 +65,7 @@ contract HighScore is
         }
 
         if (!_verifySignature(message, signature)) {
-            revert InvalidSignature();
+            revert InvalidSigner();
         }
 
         uint256 previousScore = highScores[message.player];
