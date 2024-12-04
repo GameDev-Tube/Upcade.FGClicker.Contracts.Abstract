@@ -1,32 +1,46 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.27;
 
+import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {EIP712Upgradeable} from "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol";
+import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
+
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
 /// @title HighScore contract
-/// @notice This contract is used to store the high score for Pepenade Crush game by utilizing EIP-712 standard
-contract HighScore is EIP712 {
-    // adres backendu, który będzie podpisywał wiadomości
+/// @notice UUPS upgradable contract, used to store the high score for Pepenade Crush game by utilizing EIP-712 standard
+contract HighScore is Initializable, UUPSUpgradeable, EIP712Upgradeable, Ownable2StepUpgradeable {
+    
+    /// @notice The address of the backend wallet that will sign the messages
     address public backendSigner;
 
+    /// @notice The message struct containing the player address, score and nonce
     struct HighScoreMessage {
         address player;
         uint256 score;
         string nonce;
     }
 
+    /// @notice Event emitted when a high score is set
     event HighScoreSet(
         address player,
         uint256 previousScore,
         uint256 currentScore
     );
 
+    /// @notice Mapping of player address to their high score
     mapping(address => uint256) public highScores;
+
+    /// @notice Mapping of nonces to check if they were already used
     mapping(string => bool) public nonces;
 
-    /// @param _backendSigner The address of the backend wallet that will sign the messages
-    constructor(address _backendSigner) EIP712("HighScore", "1") {
+    /// @notice Initializes the contract with the backend wallet address and the deployer as the owner
+    /// @param _backendSigner The address of the backend wallet
+    function initialize(address _backendSigner) external initializer {
+        __Ownable_init(msg.sender);
+        __EIP712_init("HighScore", "1");
         backendSigner = _backendSigner;
     }
 
@@ -84,14 +98,14 @@ contract HighScore is EIP712 {
         return _hashMessage(message);
     }
 
-    /// @notice Checks if the nonce was already used
+    /// @dev Checks if the nonce was already used
     /// @param nonce The nonce to check
     /// @return bool
     function _nonceUsed(string memory nonce) internal view returns (bool) {
         return nonces[nonce];
     }
 
-    /// @notice Verifies if the message was constructed correctly
+    /// @dev Verifies if the message was constructed correctly
     /// @param message The message containing the player address, score, nonce
     /// @param rawMessage The raw message
     /// @return bool
@@ -104,7 +118,7 @@ contract HighScore is EIP712 {
         return expectedDigest == digest;
     }
 
-    /// @notice Verifies if the message was signed by the backend wallet
+    /// @dev Verifies if the message was signed by the backend wallet
     /// @param message The message containing the player address, score, nonce
     /// @param signature The signature of the message
     /// @return bool
@@ -117,7 +131,7 @@ contract HighScore is EIP712 {
         return signer == backendSigner;
     }
 
-    /// @notice ABI encodes the message and hashes it using keccak256
+    /// @dev ABI encodes the message and hashes it using keccak256
     /// @param message The message containing the player address, score, nonce
     /// @return bytes32
     function _hashMessage(
@@ -135,4 +149,13 @@ contract HighScore is EIP712 {
                 )
             );
     }
+
+
+    /// @dev Upgrades the contract to a new implementation
+    /// @param newImplementation The address of the new implementation
+    function _authorizeUpgrade(address newImplementation)
+        internal
+        override
+        onlyOwner
+    {}
 }
