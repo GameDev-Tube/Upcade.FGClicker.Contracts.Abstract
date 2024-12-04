@@ -11,8 +11,12 @@ import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
 /// @title HighScore contract
 /// @notice UUPS upgradable contract, used to store the high score for Pepenade Crush game by utilizing EIP-712 standard
-contract HighScore is Initializable, UUPSUpgradeable, EIP712Upgradeable, Ownable2StepUpgradeable {
-    
+contract HighScore is
+    Initializable,
+    UUPSUpgradeable,
+    EIP712Upgradeable,
+    Ownable2StepUpgradeable
+{
     /// @notice The address of the backend wallet that will sign the messages
     address public backendSigner;
 
@@ -29,6 +33,11 @@ contract HighScore is Initializable, UUPSUpgradeable, EIP712Upgradeable, Ownable
         uint256 previousScore,
         uint256 currentScore
     );
+
+    /// @dev Custom errors
+    error NonceAlreadyUsed(string nonce);
+    error InvalidSignature();
+    error ScoreNotHigher(uint previousScore, uint currentScore);
 
     /// @notice Mapping of player address to their high score
     mapping(address => uint256) public highScores;
@@ -51,18 +60,19 @@ contract HighScore is Initializable, UUPSUpgradeable, EIP712Upgradeable, Ownable
         HighScoreMessage memory message,
         bytes memory signature
     ) external {
-        require(!_nonceUsed(message.nonce), "HighScore: nonce already used"); // TODO custom error
-        require(
-            _verifySignature(message, signature),
-            "HighScore: invalid signature"
-        ); // TODO custom error
+        if (_nonceUsed(message.nonce)) {
+            revert NonceAlreadyUsed(message.nonce);
+        }
+
+        if (!_verifySignature(message, signature)) {
+            revert InvalidSignature();
+        }
 
         uint256 previousScore = highScores[message.player];
         uint256 currentScore = message.score;
-        require(
-            currentScore > previousScore,
-            "HighScore: score is not higher than the previous one"
-        ); // TODO custom error
+        if (currentScore <= previousScore) {
+            revert ScoreNotHigher(previousScore, currentScore);
+        }
 
         highScores[message.player] = message.score;
         nonces[message.nonce] = true;
@@ -150,12 +160,9 @@ contract HighScore is Initializable, UUPSUpgradeable, EIP712Upgradeable, Ownable
             );
     }
 
-
     /// @dev Upgrades the contract to a new implementation
     /// @param newImplementation The address of the new implementation
-    function _authorizeUpgrade(address newImplementation)
-        internal
-        override
-        onlyOwner
-    {}
+    function _authorizeUpgrade(
+        address newImplementation
+    ) internal override onlyOwner {}
 }
