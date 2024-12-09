@@ -6,8 +6,8 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 import {EIP712Upgradeable} from "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol";
 import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
 
-import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
+import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+import {EIP712} from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
 /// @title HighScore contract
 /// @notice UUPS upgradable contract, used to store the high score for Pepenade Crush game by utilizing EIP-712 standard
@@ -28,11 +28,7 @@ contract HighScore is
     }
 
     /// @notice Event emitted when a high score is set
-    event HighScoreSet(
-        address player,
-        uint256 currentScore,
-        uint256 newScore
-    );
+    event HighScoreSet(address player, uint256 currentScore, uint256 newScore);
 
     /// @dev Custom errors
     error NonceAlreadyUsed(string nonce);
