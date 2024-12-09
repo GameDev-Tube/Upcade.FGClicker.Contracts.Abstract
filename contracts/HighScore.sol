@@ -30,6 +30,9 @@ contract HighScore is
     /// @notice Event emitted when a high score is set
     event HighScoreSet(address player, uint256 currentScore, uint256 newScore);
 
+    /// @notice Event emitted when the backend wallet address is set
+    event BackendSignerSet(address backendSigner);
+
     /// @dev Custom errors
     error NonceAlreadyUsed(string nonce);
     error InvalidSigner();
@@ -89,6 +92,7 @@ contract HighScore is
     /// @param _backendSigner The address of the backend wallet
     function setBackendSigner(address _backendSigner) public onlyOwner {
         backendSigner = _backendSigner;
+        emit BackendSignerSet(_backendSigner);
     }
 
     /// @notice Debug function to get the signer of a message

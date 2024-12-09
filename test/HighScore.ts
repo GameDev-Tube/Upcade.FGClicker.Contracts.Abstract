@@ -142,6 +142,13 @@ describe("HighScore", function () {
       const { contract, otherAccount } = await loadFixture(deploy);
       await expect(contract.connect(otherAccount).setBackendSigner(otherAccount.address)).to.be.revertedWithCustomError(contract, "OwnableUnauthorizedAccount");
     });
+
+    it("Should emit a BackendSignerSet event", async function () {
+      const { contract, otherAccount } = await loadFixture(deploy);
+      await expect(contract.setBackendSigner(otherAccount.address))
+        .to.emit(contract, "BackendSignerSet")
+        .withArgs(otherAccount.address);
+    });
   });
 
   describe("isMessageEncodingValid", function () {
