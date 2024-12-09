@@ -106,14 +106,6 @@ contract HighScore is
             ECDSA.recover(_hashTypedDataV4(_hashMessage(message)), signature);
     }
 
-    /// @notice Debug function to hash a message
-    /// @param message The message containing the player address, score and nonce
-    function hashMessage(
-        HighScoreMessage memory message
-    ) public pure returns (bytes32) {
-        return _hashMessage(message);
-    }
-
     /// @dev Checks if the nonce was already used
     /// @param nonce The nonce to check
     /// @return bool

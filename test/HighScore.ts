@@ -241,8 +241,4 @@ describe("HighScore", function () {
       expect(signer).to.equal(backendSigner.address);
     });
   });
-
-  describe("hashMessage", function () {
-
-  });
 });
