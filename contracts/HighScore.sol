@@ -46,7 +46,7 @@ contract HighScore is
     function initialize(address _backendSigner) external initializer {
         __Ownable_init(msg.sender);
         __EIP712_init("HighScore", "1");
-        backendSigner = _backendSigner;
+        setBackendSigner(_backendSigner);
     }
 
     /// @notice Sets the high score for a player
@@ -87,7 +87,7 @@ contract HighScore is
 
     /// @notice Sets the backend wallet address. Can only be called by the owner
     /// @param _backendSigner The address of the backend wallet
-    function setBackendSigner(address _backendSigner) external onlyOwner {
+    function setBackendSigner(address _backendSigner) public onlyOwner {
         backendSigner = _backendSigner;
     }
 
