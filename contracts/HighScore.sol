@@ -106,13 +106,6 @@ contract HighScore is
             ECDSA.recover(_hashTypedDataV4(_hashMessage(message)), signature);
     }
 
-    /// @dev Checks if the nonce was already used
-    /// @param nonce The nonce to check
-    /// @return bool
-    function _nonceUsed(string memory nonce) internal view returns (bool) {
-        return nonces[nonce];
-    }
-
     /// @dev Verifies if the message was constructed correctly
     /// @param message The message containing the player address, score, nonce
     /// @param rawMessage The raw message
@@ -120,10 +113,17 @@ contract HighScore is
     function _verifyMessage(
         HighScoreMessage memory message,
         bytes32 rawMessage
-    ) internal view returns (bool) {
+    ) private view returns (bool) {
         bytes32 expectedDigest = _hashTypedDataV4(_hashMessage(message));
         bytes32 digest = _hashTypedDataV4(rawMessage);
         return expectedDigest == digest;
+    }
+
+    /// @dev Checks if the nonce was already used
+    /// @param nonce The nonce to check
+    /// @return bool
+    function _nonceUsed(string memory nonce) private view returns (bool) {
+        return nonces[nonce];
     }
 
     /// @dev Verifies if the message was signed by the backend wallet
