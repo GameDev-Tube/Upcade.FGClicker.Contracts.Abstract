@@ -20,28 +20,15 @@ contract HighScoreV2Test is
     /// @notice The address of the backend wallet that will sign the messages
     address public backendSigner;
 
-    string public version = "2.0.0";
-
-    /// @notice The message struct containing the player address, score and nonce
-    struct HighScoreMessage {
-        address player;
-        uint256 score;
-        string nonce;
-    }
-
-    /// @notice Event emitted when a high score is set
-    event HighScoreSet(address player, uint256 currentScore, uint256 newScore);
-
-    /// @dev Custom errors
-    error NonceAlreadyUsed(string nonce);
-    error InvalidSigner();
-    error ScoreNotHigher(uint currentScore, uint newScore);
 
     /// @notice Mapping of player address to their high score
     mapping(address => uint256) public highScores;
 
     /// @notice Mapping of nonces to check if they were already used
     mapping(string => bool) public nonces;
+
+    /// @notice The version of the contract
+    string public version = "2.0.0";
 
     /// @notice Sets the high score for a player
     /// @param player The player address

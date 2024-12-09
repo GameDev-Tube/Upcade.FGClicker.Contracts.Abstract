@@ -11,7 +11,7 @@ const backendAddress = "0x9534a32aeA7588531b5F85C612089011e947cD0E";
 
 import HighScoreModule from "../ignition/modules/HighScore";
 
-import UpgradeTestModule from "../ignition/modules/test/UpgradeTest";
+import UpgradeModule from "../ignition/modules/test/UpgradeTest";
 
 describe("Proxy", function () {
     async function deploy() {
@@ -50,13 +50,15 @@ describe("Proxy", function () {
             await instance.setHighScore(message, signature);
             expect(await instance.highScores(player)).to.equal(score);
 
-            const { upgradedProxy } = await hre.ignition.deploy(UpgradeTestModule, {
-                parameters: {
-                    UpgradeTestModule: {
-                        proxyAddress: proxyAddress
+            const { upgradedProxy } = await hre.ignition.deploy(UpgradeModule,
+                {
+                    parameters: {
+                        UpgradeTestModule: {
+                            proxyAddress: proxyAddress
+                        }
                     }
                 }
-            });
+            );
 
             const scoreAfterUpgrade = await upgradedProxy.highScores(player);
             expect(scoreAfterUpgrade).to.equal(score);
