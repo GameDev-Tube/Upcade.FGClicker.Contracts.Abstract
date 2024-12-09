@@ -20,7 +20,6 @@ contract HighScoreV2Test is
     /// @notice The address of the backend wallet that will sign the messages
     address public backendSigner;
 
-
     /// @notice Mapping of player address to their high score
     mapping(address => uint256) public highScores;
 

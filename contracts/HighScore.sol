@@ -78,7 +78,7 @@ contract HighScore is
         emit HighScoreSet(message.player, currentScore, newScore);
     }
 
-    /// @notice Debug function to check if the message encoding is valid
+    /// @notice Utility function to check if the message encoding is valid
     /// @param message The message containing the player address, score and nonce
     /// @param encodedMessage Hashed, ABI encoded message
     function isMessageEncodingValid(
@@ -88,14 +88,7 @@ contract HighScore is
         return _verifyMessage(message, encodedMessage);
     }
 
-    /// @notice Sets the backend wallet address. Can only be called by the owner
-    /// @param _backendSigner The address of the backend wallet
-    function setBackendSigner(address _backendSigner) public onlyOwner {
-        backendSigner = _backendSigner;
-        emit BackendSignerSet(_backendSigner);
-    }
-
-    /// @notice Debug function to get the signer of a message
+    /// @notice Utility function to get the signer of a message
     /// @param message The message containing the player address, score and nonce
     /// @param signature The signature of the message
     function getSigner(
@@ -104,6 +97,13 @@ contract HighScore is
     ) public view returns (address) {
         return
             ECDSA.recover(_hashTypedDataV4(_hashMessage(message)), signature);
+    }
+
+    /// @notice Sets the backend wallet address. Can only be called by the owner
+    /// @param _backendSigner The address of the backend wallet
+    function setBackendSigner(address _backendSigner) public onlyOwner {
+        backendSigner = _backendSigner;
+        emit BackendSignerSet(_backendSigner);
     }
 
     /// @dev Verifies if the message was constructed correctly
