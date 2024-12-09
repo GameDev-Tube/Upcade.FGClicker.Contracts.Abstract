@@ -30,14 +30,14 @@ contract HighScore is
     /// @notice Event emitted when a high score is set
     event HighScoreSet(
         address player,
-        uint256 previousScore,
-        uint256 currentScore
+        uint256 currentScore,
+        uint256 newScore
     );
 
     /// @dev Custom errors
     error NonceAlreadyUsed(string nonce);
     error InvalidSigner();
-    error ScoreNotHigher(uint previousScore, uint currentScore);
+    error ScoreNotHigher(uint currentScore, uint newScore);
 
     /// @notice Mapping of player address to their high score
     mapping(address => uint256) public highScores;
@@ -68,15 +68,15 @@ contract HighScore is
             revert InvalidSigner();
         }
 
-        uint256 previousScore = highScores[message.player];
-        uint256 currentScore = message.score;
-        if (currentScore <= previousScore) {
-            revert ScoreNotHigher(previousScore, currentScore);
+        uint256 currentScore = highScores[message.player];
+        uint256 newScore = message.score;
+        if (newScore <= currentScore) {
+            revert ScoreNotHigher(currentScore, newScore);
         }
 
-        highScores[message.player] = message.score;
+        highScores[message.player] = newScore;
         nonces[message.nonce] = true;
-        emit HighScoreSet(message.player, previousScore, message.score);
+        emit HighScoreSet(message.player, currentScore, newScore);
     }
 
     /// @notice Debug function to check if the message encoding is valid
@@ -133,7 +133,7 @@ contract HighScore is
     function _verifySignature(
         HighScoreMessage memory message,
         bytes memory signature
-    ) internal view returns (bool) {
+    ) private view returns (bool) {
         bytes32 digest = _hashTypedDataV4(_hashMessage(message));
         address signer = ECDSA.recover(digest, signature);
         return signer == backendSigner;
