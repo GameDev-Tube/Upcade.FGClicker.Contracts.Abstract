@@ -1,67 +1,12 @@
 import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
-import { ethers, AbiCoder } from "ethers";
+import { ethers } from "ethers";
 
+import { HighScoreMessage, signMessageWithEIP712, encodeMessage } from "./Utils";
 import hre from "hardhat";
 
 const backendPk = "0xcae3bbc4e392118a36d25189a5b11e76915b9a4f2e287762f47aebc69ff05c89";
 const backendAddress = "0x9534a32aeA7588531b5F85C612089011e947cD0E";
-
-class HighScoreMessage {
-  player: string;
-  score: number;
-  nonce: string;
-
-  constructor(player: string, score: number, nonce: string) {
-    this.player = player;
-    this.score = score;
-    this.nonce = nonce;
-  }
-}
-
-async function signMessageWithEIP712(signer: ethers.Signer, message: HighScoreMessage, verifyingContract: string) {
-
-  const domain = {
-    name: "HighScore",
-    version: "1",
-    chainId: 1337,
-    verifyingContract: verifyingContract,
-  };
-
-  const types = {
-    HighScoreMessage: [
-      { name: "player", type: "address" },
-      { name: "score", type: "uint256" },
-      { name: "nonce", type: "string" },
-    ],
-  };
-
-  const signature = await signer.signTypedData(domain, types, message);
-  return signature;
-}
-
-function encodeMessage(message: HighScoreMessage) {
-  const messageHash = ethers.keccak256(
-    AbiCoder.defaultAbiCoder().encode(
-      [
-        "bytes32",
-        "address",
-        "uint256",
-        "bytes32",
-      ],
-      [
-        ethers.keccak256(
-          ethers.toUtf8Bytes("HighScoreMessage(address player,uint256 score,string nonce)")
-        ),
-        message.player,
-        message.score,
-        ethers.keccak256(ethers.toUtf8Bytes(message.nonce)),
-      ]
-    )
-  );
-
-  return messageHash;
-}
 
 describe("HighScore", function () {
   async function deploy() {
