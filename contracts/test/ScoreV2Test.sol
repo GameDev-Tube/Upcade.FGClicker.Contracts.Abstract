@@ -11,7 +11,7 @@ import {EIP712} from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
 /// @title HighScore contract for upgrade testing purposes
 /// @notice UUPS upgradable contract, used to store the high score for Pepenade Crush game by utilizing EIP-712 standard
-contract HighScoreV2Test is
+contract ScoreV2Test is
     Initializable,
     UUPSUpgradeable,
     EIP712Upgradeable,
@@ -21,7 +21,7 @@ contract HighScoreV2Test is
     address public backendSigner;
 
     /// @notice Mapping of player address to their high score
-    mapping(address => uint256) public highScores;
+    mapping(address => uint256) public scores;
 
     /// @notice Mapping of nonces to check if they were already used
     mapping(string => bool) public nonces;
@@ -32,11 +32,11 @@ contract HighScoreV2Test is
     /// @notice Sets the high score for a player
     /// @param player The player address
     /// @param score The score to set
-    function setHighScore(
+    function addScore(
         address player,
         uint256 score
     ) external {
-        highScores[player] = score;
+        scores[player] += score;
     }
 
     /// @dev Upgrades the contract to a new implementation

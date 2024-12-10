@@ -2,22 +2,22 @@ import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { ethers } from "ethers";
 
-import { HighScoreMessage, signMessageWithEIP712, encodeMessage } from "./Utils";
+import { ScoreMessage, signMessageWithEIP712, encodeMessage } from "./Utils";
 import hre from "hardhat";
 
 const backendPk = "0xcae3bbc4e392118a36d25189a5b11e76915b9a4f2e287762f47aebc69ff05c89";
 const backendAddress = "0x9534a32aeA7588531b5F85C612089011e947cD0E";
 
-describe("HighScore", function () {
+describe("Score", function () {
   async function deploy() {
     const [owner, otherAccount] = await hre.ethers.getSigners();
-    const highScoreFactory = await hre.ethers.getContractFactory("HighScore");
-    const highScoreContract = await highScoreFactory.deploy();
-    await highScoreContract.initialize(backendAddress);
+    const scoreFactory = await hre.ethers.getContractFactory("Score");
+    const scoreContract = await scoreFactory.deploy();
+    await scoreContract.initialize(backendAddress);
     const backendSigner = new ethers.Wallet(backendPk, hre.ethers.provider);
-    const contractAddress = await highScoreContract.getAddress();
+    const contractAddress = await scoreContract.getAddress();
 
-    return { contract: highScoreContract, owner, otherAccount, backendSigner, contractAddress };
+    return { contract: scoreContract, owner, otherAccount, backendSigner, contractAddress };
   }
 
   describe("Initialization", function () {
@@ -34,20 +34,40 @@ describe("HighScore", function () {
     });
   });
 
-  describe("Setting high-score", function () {
-    it("Should validate the signature and change the highscore", async function () {
+  describe("Adding score", function () {
+    it("Should validate the signature and change the score", async function () {
       const nonce = "2d547b6b-a87d-4298-9358-a08990a4f878";
       const player = "0x96C15A68B5620DcbE86EC199E866Da5B6519Cd3D";
       const score = 100_000;
 
       const { contract, backendSigner, contractAddress } = await loadFixture(deploy);
 
-      const message = new HighScoreMessage(player, score, nonce);
+      const message = new ScoreMessage(player, score, nonce);
       const signature = await signMessageWithEIP712(backendSigner, message, contractAddress);
 
-      await contract.setHighScore(message, signature);
-      const highScore = await contract.highScores(player);
-      expect(highScore).to.equal(score);
+      await contract.addScore(message, signature);
+      const newScore = await contract.scores(player);
+      expect(newScore).to.equal(score);
+    });
+
+    it("Should validate the signature add the score to the total", async function () {
+      const nonce1 = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
+      const nonce2 = "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb";
+      const player = "0x0000000000000000000000000000000000000001";
+      const score = 100_000;
+
+      const { contract, backendSigner, contractAddress } = await loadFixture(deploy);
+
+      const message1 = new ScoreMessage(player, score, nonce1);
+      const message2 = new ScoreMessage(player, score, nonce2);
+      
+      const signature1 = await signMessageWithEIP712(backendSigner, message1, contractAddress);
+      const signature2 = await signMessageWithEIP712(backendSigner, message2, contractAddress);
+
+      await contract.addScore(message1, signature1);
+      await contract.addScore(message2, signature2);
+      const totalScore = await contract.scores(player);
+      expect(totalScore).to.equal(score * 2);
     });
 
     it("Should revert with custom error if nonce is already used", async function () {
@@ -57,11 +77,11 @@ describe("HighScore", function () {
 
       const { contract, backendSigner, contractAddress } = await loadFixture(deploy);
 
-      const message = new HighScoreMessage(player, score, nonce);
+      const message = new ScoreMessage(player, score, nonce);
       const signature = await signMessageWithEIP712(backendSigner, message, contractAddress);
 
-      await contract.setHighScore(message, signature);
-      await expect(contract.setHighScore(message, signature)).to.be.revertedWithCustomError(contract, "NonceAlreadyUsed");
+      await contract.addScore(message, signature);
+      await expect(contract.addScore(message, signature)).to.be.revertedWithCustomError(contract, "NonceAlreadyUsed");
     });
 
     it("Should revert with custom error if signature is invalid", async function () {
@@ -71,11 +91,16 @@ describe("HighScore", function () {
 
       const { contract, backendSigner, contractAddress } = await loadFixture(deploy);
 
-      const message = new HighScoreMessage(player, score, nonce);
+      const message = new ScoreMessage(player, score, nonce); 
       const signature = await signMessageWithEIP712(backendSigner, message, contractAddress);
+      const split = ethers.Signature.from(signature);
+      const invalidSignature = ethers.Signature.from({
+        r: "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+        s: split.s,
+        v: split.v
+      }).serialized;
 
-      const invalidSignature = signature.replace("a", "b");
-      await expect(contract.setHighScore(message, invalidSignature)).to.be.revertedWithCustomError(contract, "ECDSAInvalidSignature");
+      await expect(contract.addScore(message, invalidSignature)).to.be.revertedWithCustomError(contract, "ECDSAInvalidSignature");
     });
 
     it("Should revert with custom error if the signer is not the backend", async function () {
@@ -85,48 +110,26 @@ describe("HighScore", function () {
 
       const { contract, contractAddress } = await loadFixture(deploy);
 
-      const message = new HighScoreMessage(player, score, nonce);
+      const message = new ScoreMessage(player, score, nonce);
       const randomSigner = ethers.Wallet.createRandom();
       const signature = await signMessageWithEIP712(randomSigner, message, contractAddress);
 
-      await expect(contract.setHighScore(message, signature)).to.be.revertedWithCustomError(contract, "InvalidSigner");
+      await expect(contract.addScore(message, signature)).to.be.revertedWithCustomError(contract, "InvalidSigner");
     });
 
-    it("Should revert with custom error if the new score is not higher than the previous one", async function () {
-      const nonce = "aaaaaaaa-a87d-4298-9358-a08990a4f878";
-      const nonce2 = "bbbbbbbb-a87d-4298-9358-a08990a4f879";
-      const player = "0x96C15A68B5620DcbE86EC199E866Da5B6519Cd3D";
-      const score = 100_000;
-
-      const { contract, backendSigner, contractAddress } = await loadFixture(deploy);
-
-      const message = new HighScoreMessage(player, score, nonce);
-      const signature = await signMessageWithEIP712(backendSigner, message, contractAddress);
-
-      await contract.setHighScore(message, signature);
-      const highScore = await contract.highScores(player);
-      expect(highScore).to.equal(score);
-
-      const lowerScore = 50_000;
-      const lowerMessage = new HighScoreMessage(player, lowerScore, nonce2);
-      const lowerSignature = await signMessageWithEIP712(backendSigner, lowerMessage, contractAddress);
-
-      await expect(contract.setHighScore(lowerMessage, lowerSignature)).to.be.revertedWithCustomError(contract, "ScoreNotHigher");
-    });
-
-    it("Should emit a HighScoreSet event", async function () {
+    it("Should emit a ScoreIncreased event", async function () {
       const nonce = "2d547b6b-a87d-4298-9358-a08990a4f878";
       const player = "0x96C15A68B5620DcbE86EC199E866Da5B6519Cd3D";
       const score = 100_000;
 
       const { contract, backendSigner, contractAddress } = await loadFixture(deploy);
 
-      const message = new HighScoreMessage(player, score, nonce);
+      const message = new ScoreMessage(player, score, nonce);
       const signature = await signMessageWithEIP712(backendSigner, message, contractAddress);
 
-      await expect(contract.setHighScore(message, signature))
-        .to.emit(contract, "HighScoreSet")
-        .withArgs(player, 0, score);
+      await expect(contract.addScore(message, signature))
+        .to.emit(contract, "ScoreIncreased")
+        .withArgs(player, score);
     });
   });
 
@@ -159,7 +162,7 @@ describe("HighScore", function () {
 
       const { contract } = await loadFixture(deploy);
 
-      const message = new HighScoreMessage(player, score, nonce);
+      const message = new ScoreMessage(player, score, nonce);
       const encoded = encodeMessage(message);
       const isValid = await contract.isMessageEncodingValid(message, encoded);
       expect(isValid).to.be.true;
@@ -172,7 +175,7 @@ describe("HighScore", function () {
 
       const { contract } = await loadFixture(deploy);
 
-      const message = new HighScoreMessage(player, score, nonce);
+      const message = new ScoreMessage(player, score, nonce);
       const encoded = encodeMessage(message);
       const isValid = await contract.isMessageEncodingValid(message, encoded.replace("a", "b"));
       expect(isValid).to.be.false;
@@ -187,7 +190,7 @@ describe("HighScore", function () {
 
       const { contract, backendSigner, contractAddress } = await loadFixture(deploy);
 
-      const message = new HighScoreMessage(player, score, nonce);
+      const message = new ScoreMessage(player, score, nonce);
       const signature = signMessageWithEIP712(backendSigner, message, contractAddress);
       const signer = await contract.getSigner(message, signature);
       expect(signer).to.equal(backendSigner.address);

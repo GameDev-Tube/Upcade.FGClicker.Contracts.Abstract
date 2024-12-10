@@ -2,14 +2,14 @@ import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { ethers } from "ethers";
 
-import { HighScoreMessage, signMessageWithEIP712, encodeMessage } from "./Utils";
+import { ScoreMessage, signMessageWithEIP712, encodeMessage } from "./Utils";
 
 import hre from "hardhat";
 
 const backendPk = "0xcae3bbc4e392118a36d25189a5b11e76915b9a4f2e287762f47aebc69ff05c89";
 const backendAddress = "0x9534a32aeA7588531b5F85C612089011e947cD0E";
 
-import HighScoreModule from "../ignition/modules/HighScore";
+import HighScoreModule from "../ignition/modules/Score";
 
 import UpgradeModule from "../ignition/modules/test/UpgradeTest";
 
@@ -36,7 +36,7 @@ describe("Proxy", function () {
     });
 
     describe("Upgrade", function () {
-        it("Should preserve high scores set before the upgrade", async function () {
+        it("Should preserve scores set before the upgrade", async function () {
             const { instance, proxy, owner, otherAccount } = await loadFixture(deploy);
 
             const nonce = "2d547b6b-a87d-4298-9358-a08990a4f878";
@@ -44,11 +44,11 @@ describe("Proxy", function () {
             const score = 100_000;
 
             const backendSigner = new ethers.Wallet(backendPk, hre.ethers.provider);
-            const message = new HighScoreMessage(player, score, nonce);
+            const message = new ScoreMessage(player, score, nonce);
             const proxyAddress = await instance.getAddress();
             const signature = await signMessageWithEIP712(backendSigner, message, proxyAddress);
-            await instance.setHighScore(message, signature);
-            expect(await instance.highScores(player)).to.equal(score);
+            await instance.addScore(message, signature);
+            expect(await instance.scores(player)).to.equal(score);
 
             const { upgradedProxy } = await hre.ignition.deploy(UpgradeModule,
                 {
@@ -60,7 +60,7 @@ describe("Proxy", function () {
                 }
             );
 
-            const scoreAfterUpgrade = await upgradedProxy.highScores(player);
+            const scoreAfterUpgrade = await upgradedProxy.scores(player);
             expect(scoreAfterUpgrade).to.equal(score);
         });
     });

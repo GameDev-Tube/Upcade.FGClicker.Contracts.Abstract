@@ -1,6 +1,6 @@
 import { ethers, AbiCoder } from "ethers";
 
-class HighScoreMessage {
+class ScoreMessage {
     player: string;
     score: number;
     nonce: string;
@@ -12,17 +12,17 @@ class HighScoreMessage {
     }
   }
   
-  async function signMessageWithEIP712(signer: ethers.Signer, message: HighScoreMessage, verifyingContract: string) {
+  async function signMessageWithEIP712(signer: ethers.Signer, message: ScoreMessage, verifyingContract: string) {
   
     const domain = {
-      name: "HighScore",
+      name: "Score",
       version: "1",
       chainId: 1337,
       verifyingContract: verifyingContract,
     };
   
     const types = {
-      HighScoreMessage: [
+      ScoreMessage: [
         { name: "player", type: "address" },
         { name: "score", type: "uint256" },
         { name: "nonce", type: "string" },
@@ -33,7 +33,7 @@ class HighScoreMessage {
     return signature;
   }
   
-  function encodeMessage(message: HighScoreMessage) {
+  function encodeMessage(message: ScoreMessage) {
     const messageHash = ethers.keccak256(
       AbiCoder.defaultAbiCoder().encode(
         [
@@ -44,7 +44,7 @@ class HighScoreMessage {
         ],
         [
           ethers.keccak256(
-            ethers.toUtf8Bytes("HighScoreMessage(address player,uint256 score,string nonce)")
+            ethers.toUtf8Bytes("ScoreMessage(address player,uint256 score,string nonce)")
           ),
           message.player,
           message.score,
@@ -56,4 +56,4 @@ class HighScoreMessage {
     return messageHash;
   }
 
-  export { HighScoreMessage, signMessageWithEIP712, encodeMessage };
+  export { ScoreMessage, signMessageWithEIP712, encodeMessage };
