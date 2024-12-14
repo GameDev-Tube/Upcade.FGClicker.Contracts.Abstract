@@ -13,7 +13,7 @@ const config: HardhatUserConfig = {
     hardhat: {
       chainId: 1337,
     },
-    alephZeroTestnet: {
+    alephZeroEvmTestnet: {
       url: 'https://rpc.alephzero-testnet.gelato.digital',
       chainId: 2039,
       accounts: [privateKey]
@@ -23,8 +23,8 @@ const config: HardhatUserConfig = {
       chainId: 7001,
       accounts: [privateKey]
     },
-    alephZeroMainnet: {
-      url: 'https://rpc.alephzero.gelato.digital',
+    alephZeroEvmMainnet: {
+      url: 'https://rpc.alephzero.raas.gelato.cloud',
       chainId: 41455,
       accounts: [privateKey]
     },
@@ -32,8 +32,13 @@ const config: HardhatUserConfig = {
       url: "https://zetachain-evm.blockpi.network/v1/rpc/public",
       chainId: 7000,
       accounts: [privateKey]
-  }
-},
+    },
+    abstractTestnet: {
+      url: "https://api.testnet.abs.xyz",
+      chainId: 11124,
+      accounts: [privateKey]
+    },
+  },
   etherscan: {
     apiKey: {
       'alephZeroEvmTestnet': 'empty',
@@ -43,7 +48,15 @@ const config: HardhatUserConfig = {
     },
     customChains: [
       {
-        network: "alephZeroTestnet",
+        network : "abstractTestnet",
+        chainId: 11124,
+        urls: {
+          browserURL: "https://api.testnet.abs.xyz/",
+          apiURL: "https://api-explorer-verify.testnet.abs.xyz/contract_verification"
+        }
+      },
+      {
+        network: "alephZeroEvmTestnet",
         chainId: 2039,
         urls: {
           apiURL: "https://evm-explorer-testnet.alephzero.org/api",
@@ -51,7 +64,7 @@ const config: HardhatUserConfig = {
         }
       },
       {
-        network: "alephZeroMainnet",
+        network: "alephZeroEvmMainnet",
         chainId: 41455,
         urls: {
           apiURL: "https://evm-explorer.alephzero.org/api",
