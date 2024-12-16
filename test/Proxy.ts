@@ -2,7 +2,7 @@ import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { ethers } from "ethers";
 
-import { ScoreMessage, signMessageWithEIP712, encodeMessage } from "./Utils";
+import { ScoreMessage, signMessageWithEIP712 } from "./Utils";
 
 import hre from "hardhat";
 
