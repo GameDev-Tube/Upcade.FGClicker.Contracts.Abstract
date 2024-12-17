@@ -9,9 +9,9 @@ import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/acces
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import {EIP712} from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
-/// @title Fear&Greed Score contract
-/// @notice UUPS upgradable contract, used to store and aggregate score gained by players in Pepenade Crush game by utilizing EIP-712 standard
-contract Score is
+/// @title Fear & Greed: Pepenade Crush
+/// @notice TODO
+contract PepenadeCrush is
     Initializable,
     UUPSUpgradeable,
     EIP712Upgradeable,
@@ -27,8 +27,12 @@ contract Score is
         string nonce;
     }
 
-    /// @notice Event emitted when player's score is increased
-    event ScoreIncreased(address player, uint256 addedScore);
+    /// @notice Event emitted when player's high score reaches a milestone
+    event MilestoneReached(
+        address player,
+        uint256 milestoneIndex,
+        uint256 highScore
+    );
 
     /// @notice Event emitted when the backend wallet address is set
     event BackendSignerSet(address backendSigner);
@@ -36,26 +40,29 @@ contract Score is
     /// @dev Custom errors
     error NonceAlreadyUsed(string nonce);
     error InvalidSigner();
-    error ScoreNotHigher(uint currentScore, uint newScore);
+    error ScoreBelowThreshold(uint score, uint threshold);
 
     /// @notice Mapping of player address to their high score
-    mapping(address => uint256) public scores;
+    mapping(address => uint256) public highScore;
 
-    /// @notice Mapping of nonces to check if they were already used
+    /// @notice Mapping of player address to their high score milestones
+    mapping(address => uint256) public reachedMilestoneIndex;
+
+    /// @notice Mapping of nonce to a boolean indicating if it was already used
     mapping(string => bool) public nonces;
 
     /// @notice Initializes the contract with the backend wallet address and the deployer as the owner
     /// @param _backendSigner The address of the backend wallet
     function initialize(address _backendSigner) external initializer {
         __Ownable_init(msg.sender);
-        __EIP712_init("Score", "1");
+        __EIP712_init("PepenadeCrush", "1");
         setBackendSigner(_backendSigner);
     }
 
     /// @notice Adds a score to a player's current score
     /// @param message The message containing the player address, score and nonce
     /// @param signature The signature of the message signed by the backend wallet
-    function addScore(
+    function setHighScore(
         ScoreMessage memory message,
         bytes memory signature
     ) external {
@@ -67,14 +74,63 @@ contract Score is
             revert InvalidSigner();
         }
 
-        uint256 currentScore = scores[message.player];
-        uint256 addedScore = message.score;
-        uint256 newScore = currentScore + addedScore;
-        address player = message.player;
-
-        scores[player] = newScore;
+        // Mark the nonce as used
         nonces[message.nonce] = true;
-        emit ScoreIncreased(player, addedScore);
+
+        uint256 newScore = message.score;
+        uint256 nextMilestone = getNextMilestone(message.player);
+
+        // Prevent player from setting a score lower than the next milestone
+        if (newScore < nextMilestone) {
+            revert ScoreBelowThreshold(newScore, nextMilestone);
+        }
+
+        // Player can beat multiple milestones in one go, so we keep checking the next milestone until it's higher than the new score
+        while (newScore >= nextMilestone) {
+            reachedMilestoneIndex[message.player]++;
+            nextMilestone = getNextMilestone(message.player);
+
+            emit MilestoneReached(
+                message.player,
+                reachedMilestoneIndex[message.player],
+                newScore
+            );
+        }
+
+        // Update the player's high score
+        highScore[message.player] = newScore;
+    }
+
+    /// @notice Calculates the next milestone for a player
+    /// @dev The milestones are calculated as Fibonacci numbers, starting from 10
+    /// @param player The player address
+    /// @return uint256
+    function getNextMilestone(address player) public view returns (uint256) {
+        uint256 nextMilestoneIndex = reachedMilestoneIndex[player] + 1;
+        return getMilestoneScore(nextMilestoneIndex);
+    }
+
+    /// @notice Calculates the score for a given milestone
+    /// @dev The milestones are calculated as Fibonacci numbers, starting from 10
+    /// @param milestoneIndex The 1-based index of the milestone. The first milestone to beat has index 1
+    /// @return uint256
+    function getMilestoneScore(uint256 milestoneIndex) public pure returns (uint256) {
+        if (milestoneIndex == 0) {
+            return 0;
+        }
+        if (milestoneIndex == 1) {
+            return 10;
+        }
+
+        uint256 a = 10;
+        uint256 b = 20;
+        for (uint256 i = 2; i < milestoneIndex; i++) {
+            uint256 c = a + b;
+            a = b;
+            b = c;
+        }
+
+        return b;
     }
 
     /// @notice Utility function to check if the message encoding is valid

@@ -2,21 +2,21 @@ import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { ethers } from "ethers";
 
-import { ScoreMessage, signMessageWithEIP712 } from "./Utils";
+import { ScoreMessage, signMessageWithEIP712 } from "./utils";
 
 import hre from "hardhat";
 
 const backendPk = "0xcae3bbc4e392118a36d25189a5b11e76915b9a4f2e287762f47aebc69ff05c89";
 const backendAddress = "0x9534a32aeA7588531b5F85C612089011e947cD0E";
 
-import HighScoreModule from "../ignition/modules/Score";
+import PepenadeCrushModule from "../ignition/modules/PepenadeCrush";
 
 import UpgradeModule from "../ignition/modules/test/UpgradeTest";
 
 describe("Proxy", function () {
     async function deploy() {
 
-        const { instance, proxy } = await hre.ignition.deploy(HighScoreModule, {
+        const { instance, proxy } = await hre.ignition.deploy(PepenadeCrushModule, {
             parameters: {
                 ProxyModule: {
                     _backendSigner: backendAddress
@@ -36,7 +36,7 @@ describe("Proxy", function () {
     });
 
     describe("Upgrade", function () {
-        it("Should preserve scores set before the upgrade", async function () {
+        it("Should preserve highScore set before the upgrade", async function () {
             const { instance, proxy, owner, otherAccount } = await loadFixture(deploy);
 
             const nonce = "2d547b6b-a87d-4298-9358-a08990a4f878";
@@ -47,8 +47,8 @@ describe("Proxy", function () {
             const message = new ScoreMessage(player, score, nonce);
             const proxyAddress = await instance.getAddress();
             const signature = await signMessageWithEIP712(backendSigner, message, proxyAddress);
-            await instance.addScore(message, signature);
-            expect(await instance.scores(player)).to.equal(score);
+            await instance.setHighScore(message, signature);
+            expect(await instance.highScore(player)).to.equal(score);
 
             const { upgradedProxy } = await hre.ignition.deploy(UpgradeModule,
                 {
@@ -60,7 +60,7 @@ describe("Proxy", function () {
                 }
             );
 
-            const scoreAfterUpgrade = await upgradedProxy.scores(player);
+            const scoreAfterUpgrade = await upgradedProxy.highScore(player);
             expect(scoreAfterUpgrade).to.equal(score);
         });
     });
