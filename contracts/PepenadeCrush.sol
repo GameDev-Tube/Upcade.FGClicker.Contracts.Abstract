@@ -29,9 +29,10 @@ contract PepenadeCrush is
 
     /// @notice Event emitted when player's high score reaches a milestone
     event MilestoneReached(
-        address player,
+        address indexed player,
         uint256 milestoneIndex,
-        uint256 highScore
+        uint256 highScore,
+        bool isCrew
     );
 
     /// @notice Event emitted when the backend wallet address is set
@@ -47,6 +48,12 @@ contract PepenadeCrush is
 
     /// @notice Mapping of player address to their high score milestones
     mapping(address => uint256) public reachedMilestoneIndex;
+
+    /// @notice Mapping of crew address to their high score
+    mapping(address => uint256) public crewHighScore;
+
+    /// @notice Mapping of crew address to their high score milestones
+    mapping(address => uint256) public crewReachedMilestoneIndex;
 
     /// @notice Mapping of nonce to a boolean indicating if it was already used
     mapping(string => bool) public nonces;
@@ -66,55 +73,60 @@ contract PepenadeCrush is
         ScoreMessage memory message,
         bytes memory signature
     ) external {
-        if (_nonceUsed(message.nonce)) {
-            revert NonceAlreadyUsed(message.nonce);
-        }
+        _setHighScore(message, signature, false);
+    }
 
-        if (!_verifySignature(message, signature)) {
-            revert InvalidSigner();
-        }
+    function setCrewHighScore(
+        ScoreMessage memory message,
+        bytes memory signature
+    ) external {
+        _setHighScore(message, signature, true);
+    }
 
-        // Mark the nonce as used
-        nonces[message.nonce] = true;
+    function _setHighScore(
+        ScoreMessage memory message,
+        bytes memory signature,
+        bool isCrew
+    ) private {
+        _consumeNonce(message.nonce);
+        _verifySignature(message, signature);
+
+        mapping (address => uint256) storage scoreMapping = isCrew ? crewHighScore : highScore;
+        mapping (address => uint256) storage reachedMilestoneMapping = isCrew ? crewReachedMilestoneIndex : reachedMilestoneIndex;
 
         uint256 newScore = message.score;
-        uint256 nextMilestone = getNextMilestone(message.player);
+        uint256 currentMilestone = reachedMilestoneMapping[message.player];
+        uint256 nextMilestoneScore = getMilestoneScore(currentMilestone + 1);
 
         // Prevent player from setting a score lower than the next milestone
-        if (newScore < nextMilestone) {
-            revert ScoreBelowThreshold(newScore, nextMilestone);
+        if (newScore < nextMilestoneScore) {
+            revert ScoreBelowThreshold(newScore, nextMilestoneScore);
         }
 
         // Player can beat multiple milestones in one go, so we keep checking the next milestone until it's higher than the new score
-        while (newScore >= nextMilestone) {
-            reachedMilestoneIndex[message.player]++;
-            nextMilestone = getNextMilestone(message.player);
+        while (newScore >= nextMilestoneScore) {
+            reachedMilestoneMapping[message.player]++;
+            nextMilestoneScore = getMilestoneScore(reachedMilestoneMapping[message.player] + 1);
 
             emit MilestoneReached(
                 message.player,
-                reachedMilestoneIndex[message.player],
-                newScore
+                reachedMilestoneMapping[message.player],
+                newScore,
+                isCrew
             );
         }
 
         // Update the player's high score
-        highScore[message.player] = newScore;
-    }
-
-    /// @notice Calculates the next milestone for a player
-    /// @dev The milestones are calculated as Fibonacci numbers, starting from 10
-    /// @param player The player address
-    /// @return uint256
-    function getNextMilestone(address player) public view returns (uint256) {
-        uint256 nextMilestoneIndex = reachedMilestoneIndex[player] + 1;
-        return getMilestoneScore(nextMilestoneIndex);
+        scoreMapping[message.player] = newScore;
     }
 
     /// @notice Calculates the score for a given milestone
     /// @dev The milestones are calculated as Fibonacci numbers, starting from 10
     /// @param milestoneIndex The 1-based index of the milestone. The first milestone to beat has index 1
     /// @return uint256
-    function getMilestoneScore(uint256 milestoneIndex) public pure returns (uint256) {
+    function getMilestoneScore(
+        uint256 milestoneIndex
+    ) public pure returns (uint256) {
         if (milestoneIndex == 0) {
             return 0;
         }
@@ -174,24 +186,29 @@ contract PepenadeCrush is
         return expectedDigest == digest;
     }
 
-    /// @dev Checks if the nonce was already used
-    /// @param nonce The nonce to check
-    /// @return bool
-    function _nonceUsed(string memory nonce) private view returns (bool) {
-        return nonces[nonce];
-    }
-
-    /// @dev Verifies if the message was signed by the backend wallet
+    /// @dev Verifies if the message was signed by the backend wallet. Reverts with InvalidSigner if not
     /// @param message The message containing the player address, score, nonce
     /// @param signature The signature of the message
-    /// @return bool
     function _verifySignature(
         ScoreMessage memory message,
         bytes memory signature
-    ) private view returns (bool) {
+    ) private view {
         bytes32 digest = _hashTypedDataV4(_hashMessage(message));
         address signer = ECDSA.recover(digest, signature);
-        return signer == backendSigner;
+        if (signer != backendSigner) {
+            revert InvalidSigner();
+        }
+    }
+
+    /// @notice Validates whether a nonce was already used and marks it as used
+    /// @param nonce The nonce to validate
+    /// @dev Reverts with NonceAlreadyUsed if the nonce was already used
+    function _consumeNonce(string memory nonce) private {
+        if (nonces[nonce]) {
+            revert NonceAlreadyUsed(nonce);
+        }
+
+        nonces[nonce] = true;
     }
 
     /// @dev ABI encodes the message and hashes it using keccak256
