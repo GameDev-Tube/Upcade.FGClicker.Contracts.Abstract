@@ -1,21 +1,21 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
-const ScoreV2TestModule = buildModule("ScoreV2TestModule", (builder) => {
+const PepenadeCrushV2TestModule = buildModule("PepenadeCrushV2TestModule", (builder) => {
   // Deploy the implementation contract
-  const implementation = builder.contract("ScoreV2Test");
+  const implementation = builder.contract("PepenadeCrushV2Test");
 
   return { implementation };
 });
 
 const UpgradeTestModule = buildModule("UpgradeTestModule", (builder) => {
-  const { implementation } = builder.useModule(ScoreV2TestModule);
+  const { implementation } = builder.useModule(PepenadeCrushV2TestModule);
 
   const proxyAddress = builder.getParameter("proxyAddress");
-  const proxy = builder.contractAt("Score", proxyAddress);
+  const proxy = builder.contractAt("PepenadeCrush", proxyAddress);
 
   builder.call(proxy, "upgradeToAndCall", [implementation, "0x"]);
 
-  const upgradedProxy = builder.contractAt("ScoreV2Test", proxyAddress)
+  const upgradedProxy = builder.contractAt("PepenadeCrushV2Test", proxyAddress)
 
   return { upgradedProxy };
 });

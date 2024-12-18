@@ -5,7 +5,7 @@ dotenv.config();
 
 const ProxyModule = buildModule("ProxyModule", (builder) => {
   // Deploy the implementation contract
-  const implementation = builder.contract("Score");
+  const implementation = builder.contract("PepenadeCrush");
 
   // Encode the initialize function call
   const initialize = builder.encodeFunctionCall(implementation, 'initialize', [
@@ -18,14 +18,14 @@ const ProxyModule = buildModule("ProxyModule", (builder) => {
   return { proxy };
 });
 
-const ScoreModule = buildModule("ScoreModule", (builder) => {
+const PepenadeCrushModule = buildModule("PepenadeCrushModule", (builder) => {
   // Get the proxy from the previous module
   const { proxy } = builder.useModule(ProxyModule);
 
   // Create a contract instance using the deployed proxy's address
-  const instance = builder.contractAt("Score", proxy);
+  const instance = builder.contractAt("PepenadeCrush", proxy);
 
   return { instance, proxy };
 });
 
-export default ScoreModule;
+export default PepenadeCrushModule;
