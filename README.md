@@ -4,20 +4,25 @@ Solidity smart contract for Fea&Greed: Pepenade Crush minigame, that allows play
 It uses `@openzeppelin`'s EIP-712 implementation to provide a safe way for users to store backend-validated data.
 The contract is UUPS upgradeable.
 
-### 🚧 WIP NOTICE 🚧 
-Things still missing:
-1. Abstract compilation and deployment ⚠️
-
-
 ### Tests
-```bash
-npx hardhat test
-```
-
+1. Execute the following command in your terminal:
+    ```bash
+    npx hardhat test
+    ```
 ### Deployment and verification
+
+#### Abstract Testnet
+Zksync chains are not yet supported by ignition.
+1. Create and configure a `.env` file as shown in the `.env.example`
+2. Execute the following command in your terminal:
+    ```bash
+    npx hardhat deploy-zksync --script zksync.ts --network abstractTestnet
+    ```
+
+#### Other chains
 1. Create and configure a `.env` file as shown in the `.env.example`
 2. Execute the following command in your terminal, replacing `$NETWORK$` with one of the networks listed below:
-    ```
+    ```bash
     npx hardhat ignition deploy ignition/modules/Score.ts --network $NETWORK$ --verify
     ```
 
@@ -26,4 +31,3 @@ Configured networks:
 - `zetachainTestnet`
 - `alephZeroEvmMainnet`
 - `zetachainMainnet `
-- `abstractTestnet` - DOESN'T WORK YET

@@ -1,6 +1,10 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
+import '@matterlabs/hardhat-zksync-verify';
+import '@matterlabs/hardhat-zksync-upgradable';
+import "@matterlabs/hardhat-zksync"
+
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -35,6 +39,9 @@ const config: HardhatUserConfig = {
     },
     abstractTestnet: {
       url: "https://api.testnet.abs.xyz",
+      zksync: true,
+      ethNetwork: "sepolia",
+      verifyURL: "https://api-explorer-verify.testnet.abs.xyz/contract_verification",
       chainId: 11124,
       accounts: [privateKey]
     },
@@ -44,7 +51,8 @@ const config: HardhatUserConfig = {
       'alephZeroEvmTestnet': 'empty',
       'alephZeroEvmMainnet': 'empty',
       'zetachainTestnet': 'empty',
-      'zetachainMainnet': 'empty'
+      'zetachainMainnet': 'empty',
+      'abstractTestnet': 'empty'
     },
     customChains: [
       {
