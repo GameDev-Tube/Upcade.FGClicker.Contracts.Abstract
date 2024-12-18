@@ -63,7 +63,7 @@ contract PepenadeCrush is
     function initialize(address _backendSigner) external initializer {
         __Ownable_init(msg.sender);
         __EIP712_init("PepenadeCrush", "1");
-        setBackendSigner(_backendSigner);
+        _setBackendSigner(_backendSigner);
     }
 
     /// @notice Adds a score to a player's current score
@@ -168,9 +168,8 @@ contract PepenadeCrush is
 
     /// @notice Sets the backend wallet address. Can only be called by the owner
     /// @param _backendSigner The address of the backend wallet
-    function setBackendSigner(address _backendSigner) public onlyOwner {
-        backendSigner = _backendSigner;
-        emit BackendSignerSet(_backendSigner);
+    function setBackendSigner(address _backendSigner) external onlyOwner {
+        _setBackendSigner(_backendSigner);
     }
 
     /// @dev Verifies if the message was constructed correctly
@@ -198,6 +197,15 @@ contract PepenadeCrush is
         if (signer != backendSigner) {
             revert InvalidSigner();
         }
+    }
+
+    /// @notice Sets the backend wallet address
+    /// @param _backendSigner The address of the backend wallet
+    /// @dev Emits a BackendSignerSet event
+    /// @dev Does not check for authorization
+    function _setBackendSigner(address _backendSigner) private {
+        backendSigner = _backendSigner;
+        emit BackendSignerSet(_backendSigner);
     }
 
     /// @notice Validates whether a nonce was already used and marks it as used
