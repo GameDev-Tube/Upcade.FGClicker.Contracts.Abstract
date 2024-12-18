@@ -41,7 +41,7 @@ contract PepenadeCrush is
     /// @dev Custom errors
     error NonceAlreadyUsed(string nonce);
     error InvalidSigner();
-    error ScoreBelowThreshold(uint score, uint threshold);
+    error ScoreBelowThreshold(uint256 score, uint256 threshold);
 
     /// @notice Mapping of player address to their high score
     mapping(address => uint256) public highScore;
