@@ -14,16 +14,21 @@ The contract is UUPS upgradeable.
 #### Abstract Testnet
 Zksync chains are not yet supported by ignition.
 1. Create and configure a `.env` file as shown in the `.env.example`
-2. Execute the following command in your terminal:
+2. Compile and deploy using `deploy/zksync.ts` script:
     ```bash
     npx hardhat deploy-zksync --script zksync.ts --network abstractTestnet
+    ```
+
+3. Verify deployed contracts, replacing `$DEPLOYED_PROXY_ADDRESS`:
+    ```
+    npx hardhat verify --network abstractTestnet $DEPLOYED_PROXY_ADDRESS
     ```
 
 #### Other chains
 1. Create and configure a `.env` file as shown in the `.env.example`
 2. Execute the following command in your terminal, replacing `$NETWORK$` with one of the networks listed below:
     ```bash
-    npx hardhat ignition deploy ignition/modules/Score.ts --network $NETWORK$ --verify
+    npx hardhat ignition deploy ignition/modules/PepenadeCrush.ts --network $NETWORK$ --verify
     ```
 
 Configured networks:
