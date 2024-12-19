@@ -27,6 +27,13 @@ contract PepenadeCrush is
         string nonce;
     }
 
+    /// @notice The message struct containing the player address, score and nonce for crew owners
+    struct CrewScoreMessage {
+        address player;
+        uint256 score;
+        string nonce;
+    }
+
     /// @notice Event emitted when player's high score reaches a milestone
     event MilestoneReached(
         address indexed player,
@@ -73,29 +80,31 @@ contract PepenadeCrush is
         ScoreMessage memory message,
         bytes memory signature
     ) external {
-        _setHighScore(message, signature, false);
+        _verifySignature(message, signature);
+        _setHighScore(message.player, message.score, message.nonce, false);
     }
 
     function setCrewHighScore(
-        ScoreMessage memory message,
+        CrewScoreMessage memory message,
         bytes memory signature
     ) external {
-        _setHighScore(message, signature, true);
+        _verifyCrewSignature(message, signature);
+        _setHighScore(message.player, message.score, message.nonce, true);
     }
 
     function _setHighScore(
-        ScoreMessage memory message,
-        bytes memory signature,
+        address player,
+        uint256 score,
+        string memory nonce,
         bool isCrew
     ) private {
-        _consumeNonce(message.nonce);
-        _verifySignature(message, signature);
+        _consumeNonce(nonce);
 
         mapping (address => uint256) storage scoreMapping = isCrew ? crewHighScore : highScore;
         mapping (address => uint256) storage reachedMilestoneMapping = isCrew ? crewReachedMilestoneIndex : reachedMilestoneIndex;
 
-        uint256 newScore = message.score;
-        uint256 currentMilestone = reachedMilestoneMapping[message.player];
+        uint256 newScore = score;
+        uint256 currentMilestone = reachedMilestoneMapping[player];
         uint256 nextMilestoneScore = getMilestoneScore(currentMilestone + 1);
 
         // Prevent player from setting a score lower than the next milestone
@@ -105,19 +114,19 @@ contract PepenadeCrush is
 
         // Player can beat multiple milestones in one go, so we keep checking the next milestone until it's higher than the new score
         while (newScore >= nextMilestoneScore) {
-            reachedMilestoneMapping[message.player]++;
-            nextMilestoneScore = getMilestoneScore(reachedMilestoneMapping[message.player] + 1);
+            reachedMilestoneMapping[player]++;
+            nextMilestoneScore = getMilestoneScore(reachedMilestoneMapping[player] + 1);
 
             emit MilestoneReached(
-                message.player,
-                reachedMilestoneMapping[message.player],
+                player,
+                reachedMilestoneMapping[player],
                 newScore,
                 isCrew
             );
         }
 
         // Update the player's high score
-        scoreMapping[message.player] = newScore;
+        scoreMapping[player] = newScore;
     }
 
     /// @notice Calculates the score for a given milestone
@@ -172,7 +181,7 @@ contract PepenadeCrush is
         _setBackendSigner(_backendSigner);
     }
 
-    /// @dev Verifies if the message was constructed correctly
+    /// @dev Verifies if the message of was constructed correctly
     /// @param message The message containing the player address, score, nonce
     /// @param rawMessage The raw message
     /// @return bool
@@ -193,6 +202,17 @@ contract PepenadeCrush is
         bytes memory signature
     ) private view {
         bytes32 digest = _hashTypedDataV4(_hashMessage(message));
+        address signer = ECDSA.recover(digest, signature);
+        if (signer != backendSigner) {
+            revert InvalidSigner();
+        }
+    }
+
+    function _verifyCrewSignature(
+        CrewScoreMessage memory message,
+        bytes memory signature
+    ) private view {
+        bytes32 digest = _hashTypedDataV4(_hashCrewMessage(message));
         address signer = ECDSA.recover(digest, signature);
         if (signer != backendSigner) {
             revert InvalidSigner();
@@ -230,6 +250,25 @@ contract PepenadeCrush is
                 abi.encode(
                     keccak256(
                         "ScoreMessage(address player,uint256 score,string nonce)"
+                    ),
+                    message.player,
+                    message.score,
+                    keccak256(bytes(message.nonce))
+                )
+            );
+    }
+
+    /// @dev ABI encodes the message and hashes it using keccak256
+    /// @param message The message containing the player address, score, nonce
+    /// @return bytes32
+    function _hashCrewMessage(
+        CrewScoreMessage memory message
+    ) private pure returns (bytes32) {
+        return
+            keccak256(
+                abi.encode(
+                    keccak256(
+                        "CrewScoreMessage(address player,uint256 score,string nonce)"
                     ),
                     message.player,
                     message.score,
