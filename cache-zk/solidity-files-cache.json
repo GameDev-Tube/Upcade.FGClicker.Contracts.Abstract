@@ -1,1632 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\contracts\\PepenadeCrush.sol": {
-      "lastModificationDate": 1734541443092,
-      "contentHash": "dd42323822b01dc9a681a6a5ee057080",
-      "sourceName": "contracts/PepenadeCrush.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
-        "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-        "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol",
-        "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol",
-        "@openzeppelin/contracts/utils/cryptography/ECDSA.sol",
-        "@openzeppelin/contracts/utils/cryptography/EIP712.sol"
-      ],
-      "versionPragmas": [
-        "0.8.27"
-      ],
-      "artifacts": [
-        "PepenadeCrush"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\cryptography\\EIP712.sol": {
-      "lastModificationDate": 1732540647266,
-      "contentHash": "8dbb261c55f358342798c4d1803d4f8e",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/EIP712.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "./MessageHashUtils.sol",
-        "../ShortStrings.sol",
-        "../../interfaces/IERC5267.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "EIP712"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\cryptography\\ECDSA.sol": {
-      "lastModificationDate": 1732540647266,
-      "contentHash": "81de029d56aa803972be03c5d277cb6c",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/ECDSA.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "ECDSA"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts-upgradeable\\proxy\\utils\\UUPSUpgradeable.sol": {
-      "lastModificationDate": 1733310860327,
-      "contentHash": "3dff09f84f7ddc1e57683d134b53617f",
-      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/interfaces/draft-IERC1822.sol",
-        "@openzeppelin/contracts/proxy/ERC1967/ERC1967Utils.sol",
-        "./Initializable.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "UUPSUpgradeable"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts-upgradeable\\access\\Ownable2StepUpgradeable.sol": {
-      "lastModificationDate": 1733310860323,
-      "contentHash": "c14401b3899fa52b32a4cb2a1bd22126",
-      "sourceName": "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "./OwnableUpgradeable.sol",
-        "../proxy/utils/Initializable.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Ownable2StepUpgradeable"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts-upgradeable\\utils\\cryptography\\EIP712Upgradeable.sol": {
-      "lastModificationDate": 1733310860257,
-      "contentHash": "51cc835f47cc5ee0d4b8017daef6e0ab",
-      "sourceName": "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol",
-        "@openzeppelin/contracts/interfaces/IERC5267.sol",
-        "../../proxy/utils/Initializable.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "EIP712Upgradeable"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol": {
-      "lastModificationDate": 1733310860319,
-      "contentHash": "f0cedd674b4863ee90d1521a92ab82df",
-      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Initializable"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\ShortStrings.sol": {
-      "lastModificationDate": 1732540647407,
-      "contentHash": "94e7feaf138d08fb736e43ca0be9bf26",
-      "sourceName": "@openzeppelin/contracts/utils/ShortStrings.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "./StorageSlot.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "ShortStrings"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\interfaces\\IERC5267.sol": {
-      "lastModificationDate": 1732540647374,
-      "contentHash": "94364524cb1a39dcbc3d3afff6d8e53e",
-      "sourceName": "@openzeppelin/contracts/interfaces/IERC5267.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC5267"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\cryptography\\MessageHashUtils.sol": {
-      "lastModificationDate": 1732540647390,
-      "contentHash": "86fd93657e4e27ff76c38699e9b9fcef",
-      "sourceName": "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "../Strings.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "MessageHashUtils"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\StorageSlot.sol": {
-      "lastModificationDate": 1732540647410,
-      "contentHash": "e656d64c4ce918f3d13030b91c935134",
-      "sourceName": "@openzeppelin/contracts/utils/StorageSlot.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "StorageSlot"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\Strings.sol": {
-      "lastModificationDate": 1732540647410,
-      "contentHash": "f4cc092958a3ddec1f4ed4103bfc54dd",
-      "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "./math/Math.sol",
-        "./math/SignedMath.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Strings"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\math\\Math.sol": {
-      "lastModificationDate": 1732540647385,
-      "contentHash": "2b2665ae9bdb1af440658741a77fe213",
-      "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "../Panic.sol",
-        "./SafeCast.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Math"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SignedMath.sol": {
-      "lastModificationDate": 1732540647408,
-      "contentHash": "ae3528afb8bdb0a7dcfba5b115ee8074",
-      "sourceName": "@openzeppelin/contracts/utils/math/SignedMath.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "./SafeCast.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "SignedMath"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\Panic.sol": {
-      "lastModificationDate": 1732540647397,
-      "contentHash": "2133dc13536b4a6a98131e431fac59e1",
-      "sourceName": "@openzeppelin/contracts/utils/Panic.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Panic"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\math\\SafeCast.sol": {
-      "lastModificationDate": 1732540647406,
-      "contentHash": "2adca1150f58fc6f3d1f0a0f22ee7cca",
-      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "SafeCast"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\interfaces\\draft-IERC1822.sol": {
-      "lastModificationDate": 1732540647264,
-      "contentHash": "64a2b7a96950f0641c477993f3029477",
-      "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC1822.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC1822Proxiable"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\proxy\\ERC1967\\ERC1967Utils.sol": {
-      "lastModificationDate": 1732540647280,
-      "contentHash": "405dda10d03b5eabd05700d23cc601ec",
-      "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Utils.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "../beacon/IBeacon.sol",
-        "../../interfaces/IERC1967.sol",
-        "../../utils/Address.sol",
-        "../../utils/StorageSlot.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.21"
-      ],
-      "artifacts": [
-        "ERC1967Utils"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\interfaces\\IERC1967.sol": {
-      "lastModificationDate": 1732540647366,
-      "contentHash": "4e17c826a54a8ee1a185449d4695d07d",
-      "sourceName": "@openzeppelin/contracts/interfaces/IERC1967.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC1967"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\Address.sol": {
-      "lastModificationDate": 1732540647254,
-      "contentHash": "553fc9ae17d9c00fd1c301b760781e26",
-      "sourceName": "@openzeppelin/contracts/utils/Address.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "./Errors.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Address"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\proxy\\beacon\\IBeacon.sol": {
-      "lastModificationDate": 1732540647355,
-      "contentHash": "0a5c323fd908535580597848b8e550fb",
-      "sourceName": "@openzeppelin/contracts/proxy/beacon/IBeacon.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IBeacon"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\Errors.sol": {
-      "lastModificationDate": 1732540647330,
-      "contentHash": "6b5eac2b85500c3012977849cfd633d8",
-      "sourceName": "@openzeppelin/contracts/utils/Errors.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Errors"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol": {
-      "lastModificationDate": 1733310860323,
-      "contentHash": "77d30f3cd93f46b80b6f8f1ebc574ee4",
-      "sourceName": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "../utils/ContextUpgradeable.sol",
-        "../proxy/utils/Initializable.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "OwnableUpgradeable"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol": {
-      "lastModificationDate": 1733310860252,
-      "contentHash": "c28aaa25d083a9a55bd9ec9e0b785122",
-      "sourceName": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "../proxy/utils/Initializable.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "ContextUpgradeable"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\contracts\\test\\PepenadeCrushV2Test.sol": {
-      "lastModificationDate": 1734432701896,
-      "contentHash": "d261d2605f3806ff9fb1210a3bbbc83a",
-      "sourceName": "contracts/test/PepenadeCrushV2Test.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
-        "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
-        "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol",
-        "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol",
-        "@openzeppelin/contracts/utils/cryptography/ECDSA.sol",
-        "@openzeppelin/contracts/utils/cryptography/EIP712.sol"
-      ],
-      "versionPragmas": [
-        "0.8.27"
-      ],
-      "artifacts": [
-        "PepenadeCrushV2Test"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\proxy\\ERC1967\\ERC1967Proxy.sol": {
-      "lastModificationDate": 1732540647279,
-      "contentHash": "50db9cb02db403252c427d216aa6007f",
-      "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "../Proxy.sol",
-        "./ERC1967Utils.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "ERC1967Proxy"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\proxy\\Proxy.sol": {
-      "lastModificationDate": 1732540647398,
-      "contentHash": "35308c2fa7be99a959494c37e8257c16",
-      "sourceName": "@openzeppelin/contracts/proxy/Proxy.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Proxy"
-      ]
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\contracts\\Proxy.sol": {
-      "lastModificationDate": 1734186881679,
-      "contentHash": "8d3b8ed51f0c794bd9ed471269f35177",
-      "sourceName": "contracts/Proxy.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": true,
-            "mode": "3"
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "detectMissingLibraries": false,
-          "forceEVMLA": false,
-          "enableEraVMExtensions": false,
-          "libraries": {}
-        },
-        "eraVersion": "1.0.1",
-        "zksolc": {
-          "version": "1.5.8",
-          "compilerSource": "binary",
-          "settings": {
-            "optimizer": {
-              "enabled": true,
-              "mode": "3"
-            },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
-            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
-            "areLibrariesMissing": false,
-            "experimental": {},
-            "libraries": {},
-            "enableEraVMExtensions": false,
-            "forceEVMLA": false
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol"
-      ],
-      "versionPragmas": [
-        "0.8.27"
-      ],
-      "artifacts": []
-    },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\proxy\\transparent\\ProxyAdmin.sol": {
-      "lastModificationDate": 1732540647399,
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol": {
+      "lastModificationDate": 1734688634896,
       "contentHash": "b96b9abe7393a6eb20528d70e7af9fad",
       "sourceName": "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol",
       "solcConfig": {
@@ -1663,7 +39,7 @@
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
             "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
             "areLibrariesMissing": false,
             "experimental": {},
@@ -1691,8 +67,8 @@
         "ProxyAdmin"
       ]
     },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\proxy\\transparent\\TransparentUpgradeableProxy.sol": {
-      "lastModificationDate": 1732540647413,
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol": {
+      "lastModificationDate": 1734688634896,
       "contentHash": "590d996fc7a20c09841f7d1c0dce7aaa",
       "sourceName": "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol",
       "solcConfig": {
@@ -1729,7 +105,7 @@
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
             "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
             "areLibrariesMissing": false,
             "experimental": {},
@@ -1760,8 +136,8 @@
         "TransparentUpgradeableProxy"
       ]
     },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
-      "lastModificationDate": 1732540647393,
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
+      "lastModificationDate": 1734688634896,
       "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
@@ -1798,7 +174,7 @@
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
             "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
             "areLibrariesMissing": false,
             "experimental": {},
@@ -1825,8 +201,291 @@
         "Ownable"
       ]
     },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
-      "lastModificationDate": 1732540647262,
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol": {
+      "lastModificationDate": 1734688925324,
+      "contentHash": "524a6c6f00b809b1184050dcc9e131d8",
+      "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../Proxy.sol",
+        "./ERC1967Upgrade.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC1967Proxy"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/proxy/Proxy.sol": {
+      "lastModificationDate": 1734688925364,
+      "contentHash": "40b3d81a836d50ff47e03893dcaaf204",
+      "sourceName": "@openzeppelin/contracts/proxy/Proxy.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Proxy"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/utils/Address.sol": {
+      "lastModificationDate": 1734688925314,
+      "contentHash": "ad714a6368ee7d43cded6bbe8af0b155",
+      "sourceName": "@openzeppelin/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.1"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/utils/StorageSlot.sol": {
+      "lastModificationDate": 1734688925374,
+      "contentHash": "187a01c1e4e638014509dfee3ac6faa9",
+      "sourceName": "@openzeppelin/contracts/utils/StorageSlot.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "StorageSlot"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/proxy/beacon/IBeacon.sol": {
+      "lastModificationDate": 1734688925344,
+      "contentHash": "b6bd23bf19e90b771337037706470933",
+      "sourceName": "@openzeppelin/contracts/proxy/beacon/IBeacon.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IBeacon"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1734688634876,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -1863,7 +522,7 @@
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
             "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
             "areLibrariesMissing": false,
             "experimental": {},
@@ -1888,8 +547,8 @@
         "Context"
       ]
     },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\proxy\\beacon\\UpgradeableBeacon.sol": {
-      "lastModificationDate": 1732540647414,
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/proxy/beacon/UpgradeableBeacon.sol": {
+      "lastModificationDate": 1734688634896,
       "contentHash": "199aceb57a6d0b08264d822f36b20494",
       "sourceName": "@openzeppelin/contracts/proxy/beacon/UpgradeableBeacon.sol",
       "solcConfig": {
@@ -1926,7 +585,7 @@
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
             "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
             "areLibrariesMissing": false,
             "experimental": {},
@@ -1954,8 +613,8 @@
         "UpgradeableBeacon"
       ]
     },
-    "D:\\GDT\\Upcade.FGClicker.HighScore\\node_modules\\@openzeppelin\\contracts\\proxy\\beacon\\BeaconProxy.sol": {
-      "lastModificationDate": 1732540647257,
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol": {
+      "lastModificationDate": 1734688634876,
       "contentHash": "c0fa5310e8cce024c92c40f98a78678b",
       "sourceName": "@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol",
       "solcConfig": {
@@ -1992,7 +651,7 @@
               "enabled": true,
               "mode": "3"
             },
-            "compilerPath": "C:\\Users\\barto\\AppData\\Local\\hardhat-nodejs\\Cache\\compilers-v2\\zksolc\\zksolc-v1.5.8",
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
             "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
             "areLibrariesMissing": false,
             "experimental": {},
@@ -2005,6 +664,2194 @@
               "@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol",
               "@openzeppelin/contracts/proxy/beacon/UpgradeableBeacon.sol",
               "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [
+        "./IBeacon.sol",
+        "../Proxy.sol",
+        "../ERC1967/ERC1967Utils.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "BeaconProxy"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/contracts/PepenadeCrush.sol": {
+      "lastModificationDate": 1734689124242,
+      "contentHash": "5f3eed9dcd525c381658f6cbaa2e7133",
+      "sourceName": "contracts/PepenadeCrush.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+        "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "@openzeppelin/contracts-upgradeable/utils/cryptography/draft-EIP712Upgradeable.sol",
+        "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+        "@openzeppelin/contracts/utils/cryptography/ECDSA.sol"
+      ],
+      "versionPragmas": [
+        "0.8.24"
+      ],
+      "artifacts": [
+        "PepenadeCrush"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol": {
+      "lastModificationDate": 1734688925374,
+      "contentHash": "eb2268e7f08e65339fdf577dad98c925",
+      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../../interfaces/draft-IERC1822Upgradeable.sol",
+        "../ERC1967/ERC1967UpgradeUpgradeable.sol",
+        "./Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "UUPSUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+      "lastModificationDate": 1734688925364,
+      "contentHash": "be27cb63ce8e469db3306a210450385f",
+      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../../utils/AddressUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "Initializable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/utils/cryptography/ECDSA.sol": {
+      "lastModificationDate": 1734688925324,
+      "contentHash": "482bcc512029ecf51ca4ae85cf4667c7",
+      "sourceName": "@openzeppelin/contracts/utils/cryptography/ECDSA.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../Strings.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ECDSA"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol": {
+      "lastModificationDate": 1734688925364,
+      "contentHash": "11b77de3cb69dfc6b342ec87bd09cbdd",
+      "sourceName": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../utils/ContextUpgradeable.sol",
+        "../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "OwnableUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+      "lastModificationDate": 1734688925314,
+      "contentHash": "6200b84950eb05b4a92a39fd1d6e0f9b",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ContextUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/interfaces/draft-IERC1822.sol": {
+      "lastModificationDate": 1734688925324,
+      "contentHash": "2858d98e74e67987ec81b39605230b74",
+      "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC1822.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1822Proxiable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1734688925374,
+      "contentHash": "9c54c6c065d9e590fdcdd72c451425b9",
+      "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Strings"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/utils/math/Math.sol": {
+      "lastModificationDate": 1734688634896,
+      "contentHash": "2b2665ae9bdb1af440658741a77fe213",
+      "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": false,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {},
+            "enableEraVMExtensions": false,
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../Panic.sol",
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Math"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol": {
+      "lastModificationDate": 1734688634896,
+      "contentHash": "ae3528afb8bdb0a7dcfba5b115ee8074",
+      "sourceName": "@openzeppelin/contracts/utils/math/SignedMath.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": false,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {},
+            "enableEraVMExtensions": false,
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SignedMath"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol": {
+      "lastModificationDate": 1734688634896,
+      "contentHash": "2adca1150f58fc6f3d1f0a0f22ee7cca",
+      "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": false,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "libraries": {},
+            "enableEraVMExtensions": false,
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SafeCast"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/contracts/test/PepenadeCrushV2Test.sol": {
+      "lastModificationDate": 1734689126953,
+      "contentHash": "fd5218a841c8912866088eea7a8a16d3",
+      "sourceName": "contracts/test/PepenadeCrushV2Test.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+        "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+        "@openzeppelin/contracts-upgradeable/utils/cryptography/draft-EIP712Upgradeable.sol",
+        "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+        "@openzeppelin/contracts/utils/cryptography/ECDSA.sol"
+      ],
+      "versionPragmas": [
+        "0.8.24"
+      ],
+      "artifacts": [
+        "PepenadeCrushV2Test"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/contracts/Proxy.sol": {
+      "lastModificationDate": 1734689120882,
+      "contentHash": "172bd6b75f13cb29d511cba9c850f6f4",
+      "sourceName": "contracts/Proxy.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol"
+      ],
+      "versionPragmas": [
+        "0.8.24"
+      ],
+      "artifacts": []
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/utils/cryptography/draft-EIP712Upgradeable.sol": {
+      "lastModificationDate": 1734688925314,
+      "contentHash": "58bfd44eb122c6d88351e8eda0590068",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/cryptography/draft-EIP712Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "./ECDSAUpgradeable.sol",
+        "../../proxy/utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "EIP712Upgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+      "lastModificationDate": 1734688925314,
+      "contentHash": "b70d2e0552ab1f44f7e44b5f8379c358",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.1"
+      ],
+      "artifacts": [
+        "AddressUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/interfaces/draft-IERC1822Upgradeable.sol": {
+      "lastModificationDate": 1734688925314,
+      "contentHash": "a6883cfd85607b16c121a02728369eb3",
+      "sourceName": "@openzeppelin/contracts-upgradeable/interfaces/draft-IERC1822Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1822ProxiableUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol": {
+      "lastModificationDate": 1734688925324,
+      "contentHash": "d1ceeaa35b60471b1c6e50d29d70354a",
+      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../beacon/IBeaconUpgradeable.sol",
+        "../../interfaces/draft-IERC1822Upgradeable.sol",
+        "../../utils/AddressUpgradeable.sol",
+        "../../utils/StorageSlotUpgradeable.sol",
+        "../utils/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "ERC1967UpgradeUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/utils/StorageSlotUpgradeable.sol": {
+      "lastModificationDate": 1734688925374,
+      "contentHash": "fffe21caed735dbc8a621e3844f0adb1",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/StorageSlotUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "StorageSlotUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/proxy/beacon/IBeaconUpgradeable.sol": {
+      "lastModificationDate": 1734688925354,
+      "contentHash": "21bffd733b4ca013e125a0ffe2e52254",
+      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/beacon/IBeaconUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IBeaconUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/utils/cryptography/ECDSAUpgradeable.sol": {
+      "lastModificationDate": 1734688925324,
+      "contentHash": "5604aeb0260322a4059d100ddb0fa95b",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/cryptography/ECDSAUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../StringsUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ECDSAUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol": {
+      "lastModificationDate": 1734688925374,
+      "contentHash": "f60b5fcbc57911b0fbc7a31a110f90bc",
+      "sourceName": "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "StringsUpgradeable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol": {
+      "lastModificationDate": 1734688925324,
+      "contentHash": "6baa887a798e95b14f34e093f117e9b2",
+      "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false
+          }
+        }
+      },
+      "imports": [
+        "../beacon/IBeacon.sol",
+        "../../interfaces/draft-IERC1822.sol",
+        "../../utils/Address.sol",
+        "../../utils/StorageSlot.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "ERC1967Upgrade"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol": {
+      "lastModificationDate": 1734687973373,
+      "contentHash": "b96b9abe7393a6eb20528d70e7af9fad",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [
+        "./TransparentUpgradeableProxy.sol",
+        "../../access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "ProxyAdmin"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol": {
+      "lastModificationDate": 1734687973373,
+      "contentHash": "590d996fc7a20c09841f7d1c0dce7aaa",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [
+        "../ERC1967/ERC1967Utils.sol",
+        "../ERC1967/ERC1967Proxy.sol",
+        "../../interfaces/IERC1967.sol",
+        "./ProxyAdmin.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "ITransparentUpgradeableProxy",
+        "TransparentUpgradeableProxy"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/access/Ownable.sol": {
+      "lastModificationDate": 1734687969663,
+      "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol": {
+      "lastModificationDate": 1734687973373,
+      "contentHash": "50db9cb02db403252c427d216aa6007f",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [
+        "../Proxy.sol",
+        "./ERC1967Utils.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "ERC1967Proxy"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/interfaces/IERC1967.sol": {
+      "lastModificationDate": 1734687969673,
+      "contentHash": "4e17c826a54a8ee1a185449d4695d07d",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/interfaces/IERC1967.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC1967"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Utils.sol": {
+      "lastModificationDate": 1734687973373,
+      "contentHash": "405dda10d03b5eabd05700d23cc601ec",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Utils.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [
+        "../beacon/IBeacon.sol",
+        "../../interfaces/IERC1967.sol",
+        "../../utils/Address.sol",
+        "../../utils/StorageSlot.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.21"
+      ],
+      "artifacts": [
+        "ERC1967Utils"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/Proxy.sol": {
+      "lastModificationDate": 1734687969663,
+      "contentHash": "35308c2fa7be99a959494c37e8257c16",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/Proxy.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Proxy"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/IBeacon.sol": {
+      "lastModificationDate": 1734687973363,
+      "contentHash": "0a5c323fd908535580597848b8e550fb",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/IBeacon.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IBeacon"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/utils/Address.sol": {
+      "lastModificationDate": 1734687969683,
+      "contentHash": "553fc9ae17d9c00fd1c301b760781e26",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [
+        "./Errors.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/utils/StorageSlot.sol": {
+      "lastModificationDate": 1734687969693,
+      "contentHash": "e656d64c4ce918f3d13030b91c935134",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/utils/StorageSlot.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "StorageSlot"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/utils/Errors.sol": {
+      "lastModificationDate": 1734687969693,
+      "contentHash": "6b5eac2b85500c3012977849cfd633d8",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/utils/Errors.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Errors"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/utils/Context.sol": {
+      "lastModificationDate": 1734687969693,
+      "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol": {
+      "lastModificationDate": 1734687973363,
+      "contentHash": "199aceb57a6d0b08264d822f36b20494",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
+            ]
+          }
+        }
+      },
+      "imports": [
+        "./IBeacon.sol",
+        "../../access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "UpgradeableBeacon"
+      ]
+    },
+    "/home/sebabau/repos/Upcade.FGClicker.HighScore/node_modules/@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol": {
+      "lastModificationDate": 1734687973363,
+      "contentHash": "c0fa5310e8cce024c92c40f98a78678b",
+      "sourceName": "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": true,
+            "mode": "3"
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "detectMissingLibraries": false,
+          "forceEVMLA": false,
+          "enableEraVMExtensions": true,
+          "libraries": {}
+        },
+        "eraVersion": "1.0.1",
+        "zksolc": {
+          "version": "1.5.8",
+          "compilerSource": "binary",
+          "settings": {
+            "optimizer": {
+              "enabled": true,
+              "mode": "3"
+            },
+            "compilerPath": "/root/.cache/hardhat-nodejs/compilers-v2/zksolc/zksolc-v1.5.8",
+            "missingLibrariesPath": "./.zksolc-libraries-cache/missingLibraryDependencies.json",
+            "areLibrariesMissing": false,
+            "experimental": {},
+            "enableEraVMExtensions": true,
+            "libraries": {},
+            "forceEVMLA": false,
+            "forceContractsToCompile": [
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/ProxyAdmin.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/transparent/TransparentUpgradeableProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/BeaconProxy.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/beacon/UpgradeableBeacon.sol",
+              "@openzeppelin/contracts-hardhat-zksync-upgradable/proxy/ERC1967/ERC1967Proxy.sol"
             ]
           }
         }

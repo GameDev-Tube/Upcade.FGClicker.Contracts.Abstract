@@ -2,7 +2,7 @@ import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { ethers } from "ethers";
 
-import { ScoreMessage, signMessageWithEIP712, encodeMessage, MessageFactory } from "./utils";
+import { ScoreMessage, signMessageWithEIP712, encodeMessage, MessageFactory } from "./Utils";
 import hre from "hardhat";
 
 const backendPk = "0xcae3bbc4e392118a36d25189a5b11e76915b9a4f2e287762f47aebc69ff05c89";
