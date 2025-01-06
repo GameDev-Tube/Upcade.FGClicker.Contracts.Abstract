@@ -6,7 +6,7 @@ import "@nomicfoundation/hardhat-chai-matchers";
 import dotenv from 'dotenv';
 dotenv.config();
 
-const privateKey = process.env.PRIVATE_KEY!;
+const privateKey = process.env.PRIVATE_KEY || "0xcae3bbc4e392118a36d25189a5b11e76915b9a4f2e287762f47aebc69ff05c89";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.24",
