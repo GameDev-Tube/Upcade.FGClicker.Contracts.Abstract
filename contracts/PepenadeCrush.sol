@@ -33,13 +33,8 @@ contract PepenadeCrush is
         string nonce;
     }
 
-    /// @notice Event emitted when player's high score reaches a milestone
-    event MilestoneReached(
-        address indexed player,
-        uint256 milestoneIndex,
-        uint256 highScore,
-        bool isCrew
-    );
+    /// @notice Event emitted when player's reaches new high score
+    event NewHighScore(address indexed player, uint256 highScore, bool isCrew);
 
     /// @notice Event emitted when the backend wallet address is set
     event BackendSignerSet(address backendSigner);
@@ -47,19 +42,16 @@ contract PepenadeCrush is
     /// @dev Custom errors
     error NonceAlreadyUsed(string nonce);
     error InvalidSigner();
-    error ScoreBelowThreshold(uint256 score, uint256 threshold);
+    error ScoreLowerOrEqualCurrentHighScore(
+        uint256 score,
+        uint256 currentHighscore
+    );
 
     /// @notice Mapping of player address to their high score
     mapping(address => uint256) public highScore;
 
-    /// @notice Mapping of player address to their high score milestones
-    mapping(address => uint256) public reachedMilestoneIndex;
-
     /// @notice Mapping of crew address to their high score
     mapping(address => uint256) public crewHighScore;
-
-    /// @notice Mapping of crew address to their high score milestones
-    mapping(address => uint256) public crewReachedMilestoneIndex;
 
     /// @notice Mapping of nonce to a boolean indicating if it was already used
     mapping(string => bool) public nonces;
@@ -102,61 +94,17 @@ contract PepenadeCrush is
         mapping(address => uint256) storage scoreMapping = isCrew
             ? crewHighScore
             : highScore;
-        mapping(address => uint256) storage reachedMilestoneMapping = isCrew
-            ? crewReachedMilestoneIndex
-            : reachedMilestoneIndex;
 
-        uint256 newScore = score;
-        uint256 currentMilestone = reachedMilestoneMapping[player];
-        uint256 nextMilestoneScore = getMilestoneScore(currentMilestone + 1);
+        uint256 currentHighscore = scoreMapping[player];
 
-        // Prevent player from setting a score lower than the next milestone
-        if (newScore < nextMilestoneScore) {
-            revert ScoreBelowThreshold(newScore, nextMilestoneScore);
-        }
-
-        // Player can beat multiple milestones in one go, so we keep checking the next milestone until it's higher than the new score
-        while (newScore >= nextMilestoneScore) {
-            reachedMilestoneMapping[player]++;
-            nextMilestoneScore = getMilestoneScore(
-                reachedMilestoneMapping[player] + 1
-            );
-
-            emit MilestoneReached(
-                player,
-                reachedMilestoneMapping[player],
-                newScore,
-                isCrew
-            );
-        }
+        if (score <= currentHighscore)
+            revert ScoreLowerOrEqualCurrentHighScore(score, currentHighscore);
 
         // Update the player's high score
-        scoreMapping[player] = newScore;
-    }
+        scoreMapping[player] = score;
 
-    /// @notice Calculates the score for a given milestone
-    /// @dev The milestones are calculated as Fibonacci numbers, starting from 10
-    /// @param milestoneIndex The 1-based index of the milestone. The first milestone to beat has index 1
-    /// @return uint256
-    function getMilestoneScore(
-        uint256 milestoneIndex
-    ) public pure returns (uint256) {
-        if (milestoneIndex == 0) {
-            return 0;
-        }
-        if (milestoneIndex == 1) {
-            return 10;
-        }
-
-        uint256 a = 10;
-        uint256 b = 20;
-        for (uint256 i = 2; i < milestoneIndex; i++) {
-            uint256 c = a + b;
-            a = b;
-            b = c;
-        }
-
-        return b;
+        // Emit event
+        emit NewHighScore(player, score, isCrew);
     }
 
     /// @notice Utility function to check if the message encoding is valid

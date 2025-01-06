@@ -13,7 +13,7 @@ const UpgradeTestModule = buildModule("UpgradeTestModule", (builder) => {
   const proxyAddress = builder.getParameter("proxyAddress");
   const proxy = builder.contractAt("PepenadeCrush", proxyAddress);
 
-  builder.call(proxy, "upgradeToAndCall", [implementation, "0x"]);
+  builder.call(proxy, "upgradeTo", [implementation]);
 
   const upgradedProxy = builder.contractAt("PepenadeCrushV2Test", proxyAddress)
 

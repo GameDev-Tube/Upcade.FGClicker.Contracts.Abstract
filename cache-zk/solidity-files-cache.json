@@ -681,8 +681,8 @@
       ]
     },
     "/home/sebabau/repos/Upcade.FGClicker.HighScore/contracts/PepenadeCrush.sol": {
-      "lastModificationDate": 1734689124242,
-      "contentHash": "5f3eed9dcd525c381658f6cbaa2e7133",
+      "lastModificationDate": 1736188592957,
+      "contentHash": "dd6c3f1d186a122ec0d893a38c239c03",
       "sourceName": "contracts/PepenadeCrush.sol",
       "solcConfig": {
         "version": "0.8.24",
