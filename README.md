@@ -19,20 +19,8 @@ Zksync chains are not yet supported by ignition.
     npx hardhat deploy-zksync --script zksync.ts --network abstractTestnet
     ```
 
-3. Verify deployed contracts, replacing `$DEPLOYED_PROXY_ADDRESS`:
+3. Verify deployed contracts, create and configure $PROXY_ADDRESS, $IMPLEMENTATION_ADDRESS and $CONTRACT_PATH in `.env` file
+4. Verify using deploy/verify.ts
     ```
-    npx hardhat verify --network abstractTestnet $DEPLOYED_PROXY_ADDRESS
+    npx hardhat deploy-zksync --script verify.ts --network abstractTestnet
     ```
-
-#### Other chains
-1. Create and configure a `.env` file as shown in the `.env.example`
-2. Execute the following command in your terminal, replacing `$NETWORK$` with one of the networks listed below:
-    ```bash
-    npx hardhat ignition deploy ignition/modules/PepenadeCrush.ts --network $NETWORK$ --verify
-    ```
-
-Configured networks:
-- `alephZeroEvmTestnet`
-- `zetachainTestnet`
-- `alephZeroEvmMainnet`
-- `zetachainMainnet `

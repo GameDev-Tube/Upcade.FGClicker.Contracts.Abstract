@@ -1,7 +1,7 @@
 import hre from "hardhat";
 
-const proxyAddress = "0xC2bA45F54393B1a85bD770a665d5252B070582fd";
-const implAddress = "0x4e085313f64a0535d9F8a20B72A3b2eb9f78E384"
+const proxyAddress = process.env.PROXY_ADDRESS!;
+const implAddress = process.env.IMPLEMENTATION_ADDRESS!;
 const contractFullyQualifedName = "contracts/PepenadeCrush.sol:PepenadeCrush";
 
 export default async function verify() {

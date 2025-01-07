@@ -76,25 +76,14 @@
   "entries": [
     {
       "constructorArgs": [
-        "0x1b2Fb12078675A2f8501aa97834dDC79A2f1B27a",
-        "0xc4d66de8000000000000000000000000fa552727331a154bc19fef66fcdfcd6eba790718"
+        "0xf1f433e2aA188259E523F6CDf7203E2bF84BB024",
+        "0xc4d66de80000000000000000000000003d6843c827706abfe8fb55d7f7a8b90fdc907855"
       ],
       "salt": "0x0000000000000000000000000000000000000000000000000000000000000000",
       "deploymentType": "create",
       "factoryDeps": [],
-      "address": "0xC7F715d2b0C307e4c01824392FD62F82880e84Ea",
-      "txHash": "0x1199ef46e16ecd15fcaa78e7506e55248465c8a8915531b6598eb78affb6a974"
-    },
-    {
-      "constructorArgs": [
-        "0xAa2FC0c64ed834EC199b873DdEC1D6C89245f062",
-        "0xc4d66de8000000000000000000000000fa552727331a154bc19fef66fcdfcd6eba790718"
-      ],
-      "salt": "0x0000000000000000000000000000000000000000000000000000000000000000",
-      "deploymentType": "create",
-      "factoryDeps": [],
-      "address": "0x528221B1df39c65B7dd2924b54D28aeDc13B6824",
-      "txHash": "0xf59d502b81fe89d2309c4c1becfdeebad73ef2c47e3d48d25019ebeca4d7e106"
+      "address": "0x9f271309D0aABd89588824123aD868Dafec1a144",
+      "txHash": "0x04edca89defe98ae5dfb8387e37d256f1dd1783ec44b970c891949ee7364cfa6"
     }
   ]
 }
