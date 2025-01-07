@@ -34,7 +34,12 @@ contract PepenadeCrush is
     }
 
     /// @notice Event emitted when player's reaches new high score
-    event NewHighScore(address indexed player, uint256 highScore, bool isCrew);
+    event NewHighScore(
+        address indexed player,
+        uint256 newHighScore,
+        uint256 previousHighScore,
+        bool isCrew
+    );
 
     /// @notice Event emitted when the backend wallet address is set
     event BackendSignerSet(address backendSigner);
@@ -72,6 +77,7 @@ contract PepenadeCrush is
         bytes memory signature
     ) external {
         _verifySignature(message, signature);
+        _consumeNonce(message.nonce);
         _setHighScore(message.player, message.score, message.nonce, false);
     }
 
@@ -80,6 +86,7 @@ contract PepenadeCrush is
         bytes memory signature
     ) external {
         _verifyCrewSignature(message, signature);
+        _consumeNonce(message.nonce);
         _setHighScore(message.player, message.score, message.nonce, true);
     }
 
@@ -89,8 +96,6 @@ contract PepenadeCrush is
         string memory nonce,
         bool isCrew
     ) private {
-        _consumeNonce(nonce);
-
         mapping(address => uint256) storage scoreMapping = isCrew
             ? crewHighScore
             : highScore;
@@ -104,7 +109,7 @@ contract PepenadeCrush is
         scoreMapping[player] = score;
 
         // Emit event
-        emit NewHighScore(player, score, isCrew);
+        emit NewHighScore(player, score, currentHighscore, isCrew);
     }
 
     /// @notice Utility function to check if the message encoding is valid
@@ -134,7 +139,7 @@ contract PepenadeCrush is
         _setBackendSigner(_backendSigner);
     }
 
-    /// @dev Verifies if the message of was constructed correctly
+    /// @dev Verifies if the message was constructed correctly
     /// @param message The message containing the player address, score, nonce
     /// @param rawMessage The raw message
     /// @return bool
