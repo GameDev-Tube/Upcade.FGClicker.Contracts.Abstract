@@ -10,6 +10,10 @@ class MessageFactory {
     this.signer = signer;
   }
 
+  async createCrewMessage(score: number = 100, player: string = "", nonce: string = "") {
+    return createCrewMessage(this.signer, this.contractAddress, nonce, score);
+  }
+
   async createMessage(score: number = 100, player: string = "", nonce: string = "") {
     return createMessage(this.signer, this.contractAddress, nonce, score, player);
   }
@@ -20,6 +24,18 @@ class MessageFactory {
 }
 
 class ScoreMessage {
+  player: string;
+  score: number;
+  nonce: string;
+
+  constructor(player: string, score: number, nonce: string) {
+    this.player = player;
+    this.score = score;
+    this.nonce = nonce;
+  }
+}
+
+class CrewScoreMessage {
   player: string;
   score: number;
   nonce: string;
@@ -43,6 +59,41 @@ async function createMessage(signer: ethers.Signer, verifyingContract: string, n
   const message = new ScoreMessage(player, score, nonce);
   const signature = await signMessageWithEIP712(signer, message, verifyingContract);
   return { message, signature };
+}
+
+async function createCrewMessage(signer: ethers.Signer, verifyingContract: string, nonce: string = "", score: number = 100, player: string = "") {
+  if (nonce === "") {
+    nonce = guid();
+  }
+
+  if (player === "") {
+    player = await signer.getAddress();
+  }
+
+  const message = new CrewScoreMessage(player, score, nonce);
+  const signature = await signCrewMessageWithEIP712(signer, message, verifyingContract);
+  return { message, signature };
+}
+
+async function signCrewMessageWithEIP712(signer: ethers.Signer, message: CrewScoreMessage, verifyingContract: string) {
+
+  const domain = {
+    name: "PepenadeCrush",
+    version: "1",
+    chainId: 1337,
+    verifyingContract: verifyingContract,
+  };
+
+  const types = {
+    CrewScoreMessage: [
+      { name: "player", type: "address" },
+      { name: "score", type: "uint256" },
+      { name: "nonce", type: "string" },
+    ],
+  };
+
+  const signature = await signer.signTypedData(domain, types, message);
+  return signature;
 }
 
 async function signMessageWithEIP712(signer: ethers.Signer, message: ScoreMessage, verifyingContract: string) {

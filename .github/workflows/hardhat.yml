@@ -1,0 +1,21 @@
+name: Hardhat Tests
+on:
+  pull_request:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup NodeJS 20.12.2
+              uses: actions/setup-node@v2
+              with:
+                node-version: 20.12.2
+                cache: npm
+            
+            - name: Install Hardhat
+              run: npm install --save-dev hardhat@2.22.15
+            
+            - name: Run Hardhat Test
+              run: npx hardhat test

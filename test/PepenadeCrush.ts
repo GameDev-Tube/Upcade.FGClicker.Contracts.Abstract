@@ -2,7 +2,7 @@ import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { ethers } from "ethers";
 
-import { ScoreMessage, signMessageWithEIP712, encodeMessage, createMessage, MessageFactory } from "./utils";
+import { ScoreMessage, signMessageWithEIP712, encodeMessage, MessageFactory } from "./Utils";
 import hre from "hardhat";
 
 const backendPk = "0xcae3bbc4e392118a36d25189a5b11e76915b9a4f2e287762f47aebc69ff05c89";
@@ -45,57 +45,24 @@ describe("PepenadeCrush", function () {
       expect(newScore).to.equal(message.score);
     });
 
-    it("Should emit multiple MilestoneReached events when player beats multiple milestones at once", async function () {
+    it("Should revert with ScoreLowerOrEqualCurrentHighScore if new high score is lower than current high score", async function () {
       const { contract, messageFactory } = await loadFixture(deploy);
-
       const { message, signature } = await messageFactory.createMessage(100);
-      const tx = await contract.setHighScore(message, signature);
-
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 1, 100, false);
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 2, 100, false);
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 3, 100, false);
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 4, 100, false);
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 5, 100, false);
-    });
-
-    it("Should increment the player's milestone index when they reach a new milestone", async function () {
-      const { contract, messageFactory } = await loadFixture(deploy);
-      const { message, signature } = await messageFactory.createMessage(11);
 
       await contract.setHighScore(message, signature);
-      const milestoneIndex = await contract.reachedMilestoneIndex(message.player);
-      const score = await contract.highScore(message.player);
-      expect(score).to.equal(11);
-      expect(milestoneIndex).to.equal(1);
 
-      const { message: message2, signature: signature2 } = await messageFactory.createMessage(20);
-      await contract.setHighScore(message2, signature2);
-      const milestoneIndex2 = await contract.reachedMilestoneIndex(message2.player);
-      const score2 = await contract.highScore(message2.player);
-      expect(score2).to.equal(20);
-      expect(milestoneIndex2).to.equal(2);
+      const { message: message2, signature: signature2 } = await messageFactory.createMessage(90);
+      await expect(contract.setHighScore(message2, signature2)).to.be.revertedWithCustomError(contract, "ScoreLowerOrEqualCurrentHighScore").withArgs(90, 100);
     });
 
-    it("Should revert with ScoreBelowThreshold if no milestone is reached", async function () {
-      const { contract, messageFactory } = await loadFixture(deploy);
-      const { message, signature } = await messageFactory.createMessage(1);
-
-      await expect(contract.setHighScore(message, signature)).to.be.revertedWithCustomError(contract, "ScoreBelowThreshold");
-
-      const { message: message2, signature: signature2 } = await messageFactory.createMessage(9);
-      await expect(contract.setHighScore(message2, signature2)).to.be.revertedWithCustomError(contract, "ScoreBelowThreshold");
-
-      const { message: message3, signature: signature3 } = await messageFactory.createMessage(0);
-      await expect(contract.setHighScore(message3, signature3)).to.be.revertedWithCustomError(contract, "ScoreBelowThreshold");
-
-      const { message: message4, signature: signature4 } = await messageFactory.createMessage(10);
-      await contract.setHighScore(message4, signature4);
-
-      const { message: message5, signature: signature5 } = await messageFactory.createMessage(19);
-      await expect(contract.setHighScore(message5, signature5)).to.be.revertedWithCustomError(contract, "ScoreBelowThreshold");
-
-      const { message: message6, signature: signature6 } = await messageFactory.createMessage(21);
-      await contract.setHighScore(message6, signature6);
+    it("Should revert with ScoreLowerOrEqualCurrentHighScore if new high score is equal current high score", async function () {
+        const { contract, messageFactory } = await loadFixture(deploy);
+        const { message, signature } = await messageFactory.createMessage(100);
+  
+        await contract.setHighScore(message, signature);
+  
+        const { message: message2, signature: signature2 } = await messageFactory.createMessage(100);
+        await expect(contract.setHighScore(message2, signature2)).to.be.revertedWithCustomError(contract, "ScoreLowerOrEqualCurrentHighScore").withArgs(100, 100);
     });
 
     it("Should revert with NonceAlreadyUsed if nonce is already used", async function () {
@@ -117,7 +84,7 @@ describe("PepenadeCrush", function () {
         v: split.v
       }).serialized;
 
-      await expect(contract.setHighScore(message, invalidSignature)).to.be.revertedWithCustomError(contract, "ECDSAInvalidSignature");
+      await expect(contract.setHighScore(message, invalidSignature)).to.be.revertedWith("ECDSA: invalid signature");
     });
 
     it("Should revert with InvalidSigner if the signer is not the backend", async function () {
@@ -138,69 +105,36 @@ describe("PepenadeCrush", function () {
   describe("Setting crew high score", function () {
     it("Should validate the signature and change the score", async function () {
       const { contract, messageFactory } = await loadFixture(deploy);
-      const { message, signature } = await messageFactory.createMessage(100);
+      const { message, signature } = await messageFactory.createCrewMessage(100);
 
       await contract.setCrewHighScore(message, signature);
       const newScore = await contract.crewHighScore(message.player);
       expect(newScore).to.equal(message.score);
     });
 
-    it("Should emit multiple MilestoneReached events when player beats multiple milestones at once", async function () {
-      const { contract, messageFactory } = await loadFixture(deploy);
-
-      const { message, signature } = await messageFactory.createMessage(100);
-      const tx = await contract.setCrewHighScore(message, signature);
-
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 1, 100, true);
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 2, 100, true);
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 3, 100, true);
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 4, 100, true);
-      await expect(tx).to.emit(contract, "MilestoneReached").withArgs(message.player, 5, 100, true);
-    });
-
-    it("Should increment the player's milestone index when they reach a new milestone", async function () {
-      const { contract, messageFactory } = await loadFixture(deploy);
-      const { message, signature } = await messageFactory.createMessage(11);
-
-      await contract.setCrewHighScore(message, signature);
-      const milestoneIndex = await contract.crewReachedMilestoneIndex(message.player);
-      const score = await contract.crewHighScore(message.player);
-      expect(score).to.equal(11);
-      expect(milestoneIndex).to.equal(1);
-
-      const { message: message2, signature: signature2 } = await messageFactory.createMessage(20);
-      await contract.setCrewHighScore(message2, signature2);
-      const milestoneIndex2 = await contract.crewReachedMilestoneIndex(message2.player);
-      const score2 = await contract.crewHighScore(message2.player);
-      expect(score2).to.equal(20);
-      expect(milestoneIndex2).to.equal(2);
-    });
-
-    it("Should revert with ScoreBelowThreshold if no milestone is reached", async function () {
-      const { contract, messageFactory } = await loadFixture(deploy);
-      const { message, signature } = await messageFactory.createMessage(1);
-
-      await expect(contract.setCrewHighScore(message, signature)).to.be.revertedWithCustomError(contract, "ScoreBelowThreshold");
-
-      const { message: message2, signature: signature2 } = await messageFactory.createMessage(9);
-      await expect(contract.setCrewHighScore(message2, signature2)).to.be.revertedWithCustomError(contract, "ScoreBelowThreshold");
-
-      const { message: message3, signature: signature3 } = await messageFactory.createMessage(0);
-      await expect(contract.setCrewHighScore(message3, signature3)).to.be.revertedWithCustomError(contract, "ScoreBelowThreshold");
-
-      const { message: message4, signature: signature4 } = await messageFactory.createMessage(10);
-      await contract.setCrewHighScore(message4, signature4);
-
-      const { message: message5, signature: signature5 } = await messageFactory.createMessage(19);
-      await expect(contract.setCrewHighScore(message5, signature5)).to.be.revertedWithCustomError(contract, "ScoreBelowThreshold");
-
-      const { message: message6, signature: signature6 } = await messageFactory.createMessage(21);
-      await contract.setCrewHighScore(message6, signature6);
-    });
+    it("Should revert with ScoreLowerOrEqualCurrentHighScore if new high score is lower than current high score", async function () {
+        const { contract, messageFactory } = await loadFixture(deploy);
+        const { message, signature } = await messageFactory.createCrewMessage(100);
+  
+        await contract.setCrewHighScore(message, signature);
+  
+        const { message: message2, signature: signature2 } = await messageFactory.createCrewMessage(90);
+        await expect(contract.setCrewHighScore(message2, signature2)).to.be.revertedWithCustomError(contract, "ScoreLowerOrEqualCurrentHighScore").withArgs(90, 100);
+      });
+  
+      it("Should revert with ScoreLowerOrEqualCurrentHighScore if new high score is equal current high score", async function () {
+          const { contract, messageFactory } = await loadFixture(deploy);
+          const { message, signature } = await messageFactory.createCrewMessage(100);
+    
+          await contract.setCrewHighScore(message, signature);
+    
+          const { message: message2, signature: signature2 } = await messageFactory.createCrewMessage(100);
+          await expect(contract.setCrewHighScore(message2, signature2)).to.be.revertedWithCustomError(contract, "ScoreLowerOrEqualCurrentHighScore").withArgs(100, 100);
+      });
 
     it("Should revert with NonceAlreadyUsed if nonce is already used", async function () {
       const { contract, messageFactory } = await loadFixture(deploy);
-      const { message, signature } = await messageFactory.createMessage(100);
+      const { message, signature } = await messageFactory.createCrewMessage(100);
 
       await contract.setCrewHighScore(message, signature);
 
@@ -209,7 +143,7 @@ describe("PepenadeCrush", function () {
 
     it("Should revert with ECDSAInvalidSignature if signature is invalid", async function () {
       const { contract, messageFactory } = await loadFixture(deploy);
-      const { message, signature } = await messageFactory.createMessage(100);
+      const { message, signature } = await messageFactory.createCrewMessage(100);
       const split = ethers.Signature.from(signature);
       const invalidSignature = ethers.Signature.from({
         r: "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
@@ -217,7 +151,7 @@ describe("PepenadeCrush", function () {
         v: split.v
       }).serialized;
 
-      await expect(contract.setCrewHighScore(message, invalidSignature)).to.be.revertedWithCustomError(contract, "ECDSAInvalidSignature");
+      await expect(contract.setCrewHighScore(message, invalidSignature)).to.be.revertedWith("ECDSA: invalid signature");
     });
 
     it("Should revert with InvalidSigner if the signer is not the backend", async function () {
@@ -235,37 +169,6 @@ describe("PepenadeCrush", function () {
     });
   });
 
-  describe("getMilestoneScore", function () {
-    it("Should return the score required to reach a milestone", async function () {
-      const { contract } = await loadFixture(deploy);
-
-      // Funkcja do obliczenia wartości Fibonacciego z przesunięciem
-      const fibonacci = (n: number) => {
-        if (n === 1) return 10; // Pierwsza wartość wynosi 10
-        if (n === 2) return 20; // Druga wartość wynosi 20
-        let a = 10, b = 20, temp;
-        for (let i = 3; i <= n; i++) {
-          temp = a + b; // Kolejny element ciągu Fibonacciego
-          a = b;
-          b = temp;
-        }
-        return b;
-      };
-
-      for (let i = 1; i <= 6; i++) {
-        const milestone = await contract.getMilestoneScore(i);
-        const expectedScore = fibonacci(i);
-        expect(milestone).to.equal(expectedScore);
-      }
-    });
-
-    it("Should return 0 for the 0 milestone", async function () {
-      const { contract } = await loadFixture(deploy);
-      const milestone = await contract.getMilestoneScore(0);
-      expect(milestone).to.equal(0);
-    });
-  });
-
   describe("setBackendSigner", function () {
     it("Should change the backend signer", async function () {
       const { contract, otherAccount } = await loadFixture(deploy);
@@ -276,7 +179,7 @@ describe("PepenadeCrush", function () {
 
     it("Should revert with an error if the caller is not the owner", async function () {
       const { contract, otherAccount } = await loadFixture(deploy);
-      await expect(contract.connect(otherAccount).setBackendSigner(otherAccount.address)).to.be.revertedWithCustomError(contract, "OwnableUnauthorizedAccount");
+      await expect(contract.connect(otherAccount).setBackendSigner(otherAccount.address)).to.be.revertedWith("Ownable: caller is not the owner");
     });
 
     it("Should emit a BackendSignerSet event", async function () {

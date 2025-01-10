@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.27;
+pragma solidity 0.8.24;
 
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {EIP712Upgradeable} from "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol";
-import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
+import {EIP712Upgradeable} from "@openzeppelin/contracts-upgradeable/utils/cryptography/draft-EIP712Upgradeable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import {EIP712} from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
 /// @title Fear & Greed: Pepenade Crush
 /// @notice TODO
@@ -15,7 +14,7 @@ contract PepenadeCrush is
     Initializable,
     UUPSUpgradeable,
     EIP712Upgradeable,
-    Ownable2StepUpgradeable
+    OwnableUpgradeable
 {
     /// @notice The address of the backend wallet that will sign the messages
     address public backendSigner;
@@ -27,11 +26,18 @@ contract PepenadeCrush is
         string nonce;
     }
 
-    /// @notice Event emitted when player's high score reaches a milestone
-    event MilestoneReached(
+    /// @notice The message struct containing the player address, score and nonce for crew owners
+    struct CrewScoreMessage {
+        address player;
+        uint256 score;
+        string nonce;
+    }
+
+    /// @notice Event emitted when player's reaches new high score
+    event NewHighScore(
         address indexed player,
-        uint256 milestoneIndex,
-        uint256 highScore,
+        uint256 newHighScore,
+        uint256 previousHighScore,
         bool isCrew
     );
 
@@ -41,19 +47,16 @@ contract PepenadeCrush is
     /// @dev Custom errors
     error NonceAlreadyUsed(string nonce);
     error InvalidSigner();
-    error ScoreBelowThreshold(uint256 score, uint256 threshold);
+    error ScoreLowerOrEqualCurrentHighScore(
+        uint256 score,
+        uint256 currentHighscore
+    );
 
     /// @notice Mapping of player address to their high score
     mapping(address => uint256) public highScore;
 
-    /// @notice Mapping of player address to their high score milestones
-    mapping(address => uint256) public reachedMilestoneIndex;
-
     /// @notice Mapping of crew address to their high score
     mapping(address => uint256) public crewHighScore;
-
-    /// @notice Mapping of crew address to their high score milestones
-    mapping(address => uint256) public crewReachedMilestoneIndex;
 
     /// @notice Mapping of nonce to a boolean indicating if it was already used
     mapping(string => bool) public nonces;
@@ -61,7 +64,7 @@ contract PepenadeCrush is
     /// @notice Initializes the contract with the backend wallet address and the deployer as the owner
     /// @param _backendSigner The address of the backend wallet
     function initialize(address _backendSigner) external initializer {
-        __Ownable_init(msg.sender);
+        __Ownable_init();
         __EIP712_init("PepenadeCrush", "1");
         _setBackendSigner(_backendSigner);
     }
@@ -73,76 +76,40 @@ contract PepenadeCrush is
         ScoreMessage memory message,
         bytes memory signature
     ) external {
-        _setHighScore(message, signature, false);
+        _verifySignature(message, signature);
+        _consumeNonce(message.nonce);
+        _setHighScore(message.player, message.score, message.nonce, false);
     }
 
     function setCrewHighScore(
-        ScoreMessage memory message,
+        CrewScoreMessage memory message,
         bytes memory signature
     ) external {
-        _setHighScore(message, signature, true);
+        _verifyCrewSignature(message, signature);
+        _consumeNonce(message.nonce);
+        _setHighScore(message.player, message.score, message.nonce, true);
     }
 
     function _setHighScore(
-        ScoreMessage memory message,
-        bytes memory signature,
+        address player,
+        uint256 score,
+        string memory nonce,
         bool isCrew
     ) private {
-        _consumeNonce(message.nonce);
-        _verifySignature(message, signature);
+        mapping(address => uint256) storage scoreMapping = isCrew
+            ? crewHighScore
+            : highScore;
 
-        mapping (address => uint256) storage scoreMapping = isCrew ? crewHighScore : highScore;
-        mapping (address => uint256) storage reachedMilestoneMapping = isCrew ? crewReachedMilestoneIndex : reachedMilestoneIndex;
+        uint256 currentHighscore = scoreMapping[player];
 
-        uint256 newScore = message.score;
-        uint256 currentMilestone = reachedMilestoneMapping[message.player];
-        uint256 nextMilestoneScore = getMilestoneScore(currentMilestone + 1);
-
-        // Prevent player from setting a score lower than the next milestone
-        if (newScore < nextMilestoneScore) {
-            revert ScoreBelowThreshold(newScore, nextMilestoneScore);
-        }
-
-        // Player can beat multiple milestones in one go, so we keep checking the next milestone until it's higher than the new score
-        while (newScore >= nextMilestoneScore) {
-            reachedMilestoneMapping[message.player]++;
-            nextMilestoneScore = getMilestoneScore(reachedMilestoneMapping[message.player] + 1);
-
-            emit MilestoneReached(
-                message.player,
-                reachedMilestoneMapping[message.player],
-                newScore,
-                isCrew
-            );
-        }
+        if (score <= currentHighscore)
+            revert ScoreLowerOrEqualCurrentHighScore(score, currentHighscore);
 
         // Update the player's high score
-        scoreMapping[message.player] = newScore;
-    }
+        scoreMapping[player] = score;
 
-    /// @notice Calculates the score for a given milestone
-    /// @dev The milestones are calculated as Fibonacci numbers, starting from 10
-    /// @param milestoneIndex The 1-based index of the milestone. The first milestone to beat has index 1
-    /// @return uint256
-    function getMilestoneScore(
-        uint256 milestoneIndex
-    ) public pure returns (uint256) {
-        if (milestoneIndex == 0) {
-            return 0;
-        }
-        if (milestoneIndex == 1) {
-            return 10;
-        }
-
-        uint256 a = 10;
-        uint256 b = 20;
-        for (uint256 i = 2; i < milestoneIndex; i++) {
-            uint256 c = a + b;
-            a = b;
-            b = c;
-        }
-
-        return b;
+        // Emit event
+        emit NewHighScore(player, score, currentHighscore, isCrew);
     }
 
     /// @notice Utility function to check if the message encoding is valid
@@ -199,6 +166,17 @@ contract PepenadeCrush is
         }
     }
 
+    function _verifyCrewSignature(
+        CrewScoreMessage memory message,
+        bytes memory signature
+    ) private view {
+        bytes32 digest = _hashTypedDataV4(_hashCrewMessage(message));
+        address signer = ECDSA.recover(digest, signature);
+        if (signer != backendSigner) {
+            revert InvalidSigner();
+        }
+    }
+
     /// @notice Sets the backend wallet address
     /// @param _backendSigner The address of the backend wallet
     /// @dev Emits a BackendSignerSet event
@@ -230,6 +208,25 @@ contract PepenadeCrush is
                 abi.encode(
                     keccak256(
                         "ScoreMessage(address player,uint256 score,string nonce)"
+                    ),
+                    message.player,
+                    message.score,
+                    keccak256(bytes(message.nonce))
+                )
+            );
+    }
+
+    /// @dev ABI encodes the message and hashes it using keccak256
+    /// @param message The message containing the player address, score, nonce
+    /// @return bytes32
+    function _hashCrewMessage(
+        CrewScoreMessage memory message
+    ) private pure returns (bytes32) {
+        return
+            keccak256(
+                abi.encode(
+                    keccak256(
+                        "CrewScoreMessage(address player,uint256 score,string nonce)"
                     ),
                     message.player,
                     message.score,

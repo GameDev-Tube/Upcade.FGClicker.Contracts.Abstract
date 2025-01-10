@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.27;
+pragma solidity 0.8.24;
 
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {EIP712Upgradeable} from "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol";
-import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
+import {EIP712Upgradeable} from "@openzeppelin/contracts-upgradeable/utils/cryptography/draft-EIP712Upgradeable.sol";
+import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import {EIP712} from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
 /// @title HighScore contract for upgrade testing purposes
 /// @notice UUPS upgradable contract, used to store the high score for Pepenade Crush game by utilizing EIP-712 standard
@@ -15,7 +14,7 @@ contract PepenadeCrushV2Test is
     Initializable,
     UUPSUpgradeable,
     EIP712Upgradeable,
-    Ownable2StepUpgradeable
+    OwnableUpgradeable
 {
     /// @notice The address of the backend wallet that will sign the messages
     address public backendSigner;
@@ -32,10 +31,7 @@ contract PepenadeCrushV2Test is
     /// @notice Sets the high score for a player
     /// @param player The player address
     /// @param score The score to set
-    function addScore(
-        address player,
-        uint256 score
-    ) external {
+    function addScore(address player, uint256 score) external {
         highScore[player] += score;
     }
 
