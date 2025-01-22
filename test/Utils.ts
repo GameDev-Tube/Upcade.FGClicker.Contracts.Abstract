@@ -1,6 +1,8 @@
 import { ethers, AbiCoder } from "ethers";
 import { v4 as guid } from "uuid";
 
+const defaultPlayer = "0xfa552727331A154bc19FeF66FCDFcD6eba790718";
+
 class MessageFactory {
   contractAddress: string;
   signer: ethers.Signer;
@@ -10,12 +12,14 @@ class MessageFactory {
     this.signer = signer;
   }
 
-  async createCrewMessage(score: number = 100, player: string = "", nonce: string = "") {
-    return createCrewMessage(this.signer, this.contractAddress, nonce, score);
+  async createMessage(totalScore: number = 100, highScore: number = 100, crewScore: number = 100, player: string = "", nonce: string = "", signer: ethers.Signer = this.signer) {
+    player = player === "" ? defaultPlayer : player;
+    nonce = nonce === "" ? guid() : nonce;
+    return createMessage(signer, this.contractAddress, nonce, totalScore, highScore, crewScore, player);
   }
 
-  async createMessage(score: number = 100, player: string = "", nonce: string = "") {
-    return createMessage(this.signer, this.contractAddress, nonce, score, player);
+  async createUnsignedMessage(){
+    return new ScoreMessage("0xfa552727331A154bc19FeF66FCDFcD6eba790718", 0, 0, 0, "cce5dd6b-ccac-430b-bc40-89d334166940");
   }
 
   async getSignerAddress() {
@@ -25,29 +29,28 @@ class MessageFactory {
 
 class ScoreMessage {
   player: string;
-  score: number;
+  totalScore: number;
+  highScore: number;
+  crewScore: number;
   nonce: string;
 
-  constructor(player: string, score: number, nonce: string) {
+  constructor(player: string, totalScore: number, highScore: number, crewScore: number, nonce: string) {
     this.player = player;
-    this.score = score;
+    this.totalScore = totalScore;
+    this.highScore = highScore;
+    this.crewScore = crewScore;
     this.nonce = nonce;
   }
 }
 
-class CrewScoreMessage {
-  player: string;
-  score: number;
-  nonce: string;
-
-  constructor(player: string, score: number, nonce: string) {
-    this.player = player;
-    this.score = score;
-    this.nonce = nonce;
-  }
-}
-
-async function createMessage(signer: ethers.Signer, verifyingContract: string, nonce: string = "", score: number = 100, player: string = "") {
+async function createMessage(
+  signer: ethers.Signer,
+  verifyingContract: string,
+  nonce: string = "",
+  totalScore: number = 100,
+  highScore: number = 100,
+  crewScore: number = 100,
+  player: string = "") {
   if (nonce === "") {
     nonce = guid();
   }
@@ -56,44 +59,9 @@ async function createMessage(signer: ethers.Signer, verifyingContract: string, n
     player = await signer.getAddress();
   }
 
-  const message = new ScoreMessage(player, score, nonce);
+  const message = new ScoreMessage(player, totalScore, highScore, crewScore, nonce);
   const signature = await signMessageWithEIP712(signer, message, verifyingContract);
   return { message, signature };
-}
-
-async function createCrewMessage(signer: ethers.Signer, verifyingContract: string, nonce: string = "", score: number = 100, player: string = "") {
-  if (nonce === "") {
-    nonce = guid();
-  }
-
-  if (player === "") {
-    player = await signer.getAddress();
-  }
-
-  const message = new CrewScoreMessage(player, score, nonce);
-  const signature = await signCrewMessageWithEIP712(signer, message, verifyingContract);
-  return { message, signature };
-}
-
-async function signCrewMessageWithEIP712(signer: ethers.Signer, message: CrewScoreMessage, verifyingContract: string) {
-
-  const domain = {
-    name: "PepenadeCrush",
-    version: "1",
-    chainId: 1337,
-    verifyingContract: verifyingContract,
-  };
-
-  const types = {
-    CrewScoreMessage: [
-      { name: "player", type: "address" },
-      { name: "score", type: "uint256" },
-      { name: "nonce", type: "string" },
-    ],
-  };
-
-  const signature = await signer.signTypedData(domain, types, message);
-  return signature;
 }
 
 async function signMessageWithEIP712(signer: ethers.Signer, message: ScoreMessage, verifyingContract: string) {
@@ -108,7 +76,9 @@ async function signMessageWithEIP712(signer: ethers.Signer, message: ScoreMessag
   const types = {
     ScoreMessage: [
       { name: "player", type: "address" },
-      { name: "score", type: "uint256" },
+      { name: "totalScore", type: "uint256" },
+      { name: "highScore", type: "uint256" },
+      { name: "crewScore", type: "uint256" },
       { name: "nonce", type: "string" },
     ],
   };
@@ -124,14 +94,18 @@ function encodeMessage(message: ScoreMessage) {
         "bytes32",
         "address",
         "uint256",
+        "uint256",
+        "uint256",
         "bytes32",
       ],
       [
         ethers.keccak256(
-          ethers.toUtf8Bytes("ScoreMessage(address player,uint256 score,string nonce)")
+          ethers.toUtf8Bytes("ScoreMessage(address player,uint256 totalScore,uint256 highScore,uint256 crewScore,string nonce)")
         ),
         message.player,
-        message.score,
+        message.totalScore,
+        message.highScore,
+        message.crewScore,
         ethers.keccak256(ethers.toUtf8Bytes(message.nonce)),
       ]
     )

@@ -41,14 +41,16 @@ describe("Proxy", function () {
 
             const nonce = "2d547b6b-a87d-4298-9358-a08990a4f878";
             const player = otherAccount.address;
-            const score = 100_000;
+            const totalScore = 100_000;
+            const highScore = 100_000;
+            const crewScore = 100_000;
 
             const backendSigner = new ethers.Wallet(backendPk, hre.ethers.provider);
-            const message = new ScoreMessage(player, score, nonce);
+            const message = new ScoreMessage(player, totalScore, highScore, crewScore, nonce);
             const proxyAddress = await instance.getAddress();
             const signature = await signMessageWithEIP712(backendSigner, message, proxyAddress);
-            await instance.setHighScore(message, signature);
-            expect(await instance.highScore(player)).to.equal(score);
+            await instance.updateScore(message, signature);
+            expect(await instance.highScore(player)).to.equal(totalScore);
 
             const { upgradedProxy } = await hre.ignition.deploy(UpgradeModule,
                 {
@@ -61,7 +63,7 @@ describe("Proxy", function () {
             );
 
             const scoreAfterUpgrade = await upgradedProxy.highScore(player);
-            expect(scoreAfterUpgrade).to.equal(score);
+            expect(scoreAfterUpgrade).to.equal(totalScore);
         });
     });
 });

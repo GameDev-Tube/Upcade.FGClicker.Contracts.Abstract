@@ -24,3 +24,6 @@ Zksync chains are not yet supported by ignition.
     ```
     npx hardhat deploy-zksync --script verify.ts --network abstractTestnet
     ```
+
+IMPORTANT (21.01.2025) !!!
+To have correct verification for all contracts version 0.8.28 of Solidity must be used.
