@@ -16,7 +16,7 @@ contract PepenadeCrush is
     EIP712Upgradeable,
     OwnableUpgradeable
 {
-    /// @notice The message struct containing the player address, score and nonce
+    /// @notice The message struct containing the player address, scores and nonce
     struct ScoreMessage {
         address player;
         uint256 totalScore;
