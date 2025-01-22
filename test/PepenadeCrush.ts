@@ -17,6 +17,7 @@ describe("PepenadeCrush", function () {
 		const backendSigner = new ethers.Wallet(backendPk, hre.ethers.provider);
 		const contractAddress = await contract.getAddress();
 		const messageFactory = new MessageFactory(contractAddress, backendSigner);
+
 		return { contract: contract, owner, otherAccount, messageFactory, contractAddress };
 	}
 
